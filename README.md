@@ -8,6 +8,7 @@
 - jollylovisa - Alexandra Winther Geirsdóttir.
 - annals16 - Anna Lára Sigurðardóttir.
 - DieterMut - Diemut Dina.
+- hjordisj16 - Hjördís Helga Jensdóttir.
 - katrinoh16 - Katrín Ósk Hafsteinsdóttir.
 
 ### Leiðbeinandi
