@@ -162,3 +162,4 @@ C:\Users\Anna Lara\Desktop\vln2\TeamCoding-master\TeamCode\bin\Microsoft.Owin.Se
 C:\Users\Anna Lara\Desktop\vln2\TeamCoding-master\TeamCode\obj\Debug\TeamCode.csprojResolveAssemblyReference.cache
 C:\Users\Anna Lara\Desktop\vln2\TeamCoding-master\TeamCode\obj\Debug\TeamCode.dll
 C:\Users\Anna Lara\Desktop\vln2\TeamCoding-master\TeamCode\obj\Debug\TeamCode.pdb
+C:\Users\Anna Lara\Desktop\vln2\TeamCoding-master\TeamCode\bin\Views\Home\logo.png
