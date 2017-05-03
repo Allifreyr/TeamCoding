@@ -33,7 +33,13 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>
+               Contact us:<br />
+               Menntavegur 1, 101 Reykjavík <br />
+               T-220-Vln2 Hópur 14 <br />
+               Example@ru.is <br />
+            </p>
+            <a>@Html.ActionLink("Support", "Contact", "Home")</a>
         </footer>
     </div>
 
