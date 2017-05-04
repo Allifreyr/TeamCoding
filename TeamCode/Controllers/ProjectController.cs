@@ -11,7 +11,6 @@ namespace TeamCode.Controllers
         // GET: Project
         [Authorize]
         public ActionResult Index()
-
         {
             return View();
         }
