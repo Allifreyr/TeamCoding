@@ -21,14 +21,16 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="#" class="navbar-left"><img src="http://i.imgur.com/oufSMWm.png"></a>
-                        @Html.ActionLink("Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    <li>
+                        <a href="#" class="navbar-left">
+                            <img src="http://i.imgur.com/oufSMWm.png">
+                        </a>
                     </li>
 
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Team Coding", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    <li>@Html.ActionLink("Team Coding", "Index", "Project", new { area = "" }, new { @class = "navbar-brand" })</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -36,7 +38,6 @@
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
         <footer>
             <p>
                Contact us:<br />
