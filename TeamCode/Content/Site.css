@@ -29,6 +29,18 @@ h1 {
     vertical-align: central;
 }
 
+.testBaka {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    margin-top: 130px;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    padding: 30px;
+    width:60%;
+}
+
 footer {
     border-top-style: solid;
     border-width: 1px;
