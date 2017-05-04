@@ -81,7 +81,7 @@ namespace TeamCode.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToAction("Index", "Manage");
+                    return RedirectToAction("Index", "Project");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -171,7 +171,7 @@ namespace TeamCode.Controllers
             }
 
             // If we got this far, something failed, redisplay form
-            return RedirectToAction("Index", "Manage");
+            return RedirectToAction("Index", "Home");
         }
 
         //
