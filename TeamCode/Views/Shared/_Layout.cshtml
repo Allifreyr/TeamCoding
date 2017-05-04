@@ -21,23 +21,14 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-
                     <li>
-                        <a href="#" class="navbar-left">
-                            <img src="http://i.imgur.com/oufSMWm.png">
-                        </a>
-
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li> @Html.ActionLink("My Projects", "Index", "MyProjects")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Support", "Support", "Home")</li>
-                    <li><a href="#" class="navbar-left"><img src="http://i.imgur.com/oufSMWm.png"></a>
-                        @Html.ActionLink("Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                        <a href="#" class="navbar-left"><img src="http://i.imgur.com/oufSMWm.png"></a>
                     </li>
+                </ul>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Team Coding", "Index", "Project", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    <li>@Html.ActionLink("Team Coding", "Index", "MyProjects", new { area = "" }, new { @class = "navbar-brand" })</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
