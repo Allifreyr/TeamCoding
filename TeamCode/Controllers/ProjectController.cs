@@ -10,6 +10,7 @@ namespace TeamCode.Controllers
     {
         // GET: Project
         public ActionResult Index()
+
         {
             return View();
         }
