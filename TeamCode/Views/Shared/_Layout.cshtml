@@ -7,8 +7,6 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/scripts/jquery-1.10.2.js")
- 
 
 </head>
 <body>
@@ -20,6 +18,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                <a href="#" class="navbar-left"><img src="http://i.imgur.com/oufSMWm.png"></a>
+                @Html.ActionLink("Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li> @Html.ActionLink("My Projects", "Index", "Project")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Support", "Support", "Home")</li>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -31,6 +38,7 @@
     </div>
     <div class="container body-content">
         @RenderBody()
+        <hr />
         <footer>
             <p>
                Contact us:<br />

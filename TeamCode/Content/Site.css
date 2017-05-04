@@ -29,6 +29,11 @@ h1 {
     vertical-align: central;
 }
 
+.logo{
+    height 10px;
+    width 10px;
+}
+
 footer {
     border-top-style: solid;
     border-width: 1px;
