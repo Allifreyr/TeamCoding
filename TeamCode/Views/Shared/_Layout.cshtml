@@ -27,6 +27,10 @@
                     <li> @Html.ActionLink("My Projects", "Index", "Project")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Support", "Support", "Home")</li>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Team Coding", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

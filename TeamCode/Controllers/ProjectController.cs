@@ -9,8 +9,8 @@ namespace TeamCode.Controllers
     public class ProjectController : Controller
     {
         // GET: Project
+        [Authorize]
         public ActionResult Index()
-
         {
             return View();
         }

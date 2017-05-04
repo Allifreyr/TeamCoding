@@ -6,9 +6,6 @@ using System.Web.Mvc;
 
 namespace TeamCode.Controllers
 {
-
-    // Kata að bulla til að geta pushað og pullað :)
-    // alexandra að bulla til að geta pushað og pullað :)
     public class HomeController : Controller
     {
         public ActionResult Index()
