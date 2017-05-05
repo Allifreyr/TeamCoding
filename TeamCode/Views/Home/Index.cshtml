@@ -1,10 +1,4 @@
 ﻿@using TeamCode.Models
-
-@if (Request.IsAuthenticated)
-{
-    return RedirectToAction("Index", "MyProjects");
-}
-
 @{
     ViewBag.Title = "Home Page";
     Layout = "~/views/shared/_LayoutForStartPage.cshtml";
