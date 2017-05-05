@@ -9,9 +9,7 @@ namespace TeamCode.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
-            //AutomaticMigrationDataLossAllowed = true;
-            ContextKey = "TeamCode.Models.ApplicationDbContext";
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(TeamCode.Models.ApplicationDbContext context)
