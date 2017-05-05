@@ -38,6 +38,12 @@ h1 {
     color: #029f5b !important;
 }
 
+.layoutLogo {
+    height: 80px;
+    width: 120px;
+    padding: 8px;
+}
+
 footer {
     border-top-style: solid;
     border-width: 1px;
