@@ -10,6 +10,11 @@ namespace TeamCode.Controllers
     {
         public ActionResult Index()
         {
+            if(Request.IsAuthenticated)                         //If user is logged in
+            {
+                return RedirectToAction("Index", "MyProjects"); //Redirect to Myproject
+            }
+
             return View();
         }
 
