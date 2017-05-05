@@ -38,6 +38,10 @@ h1 {
     color: #029f5b !important;
 }
 
+.navbar-inverse {
+  border-color: transparent;
+}
+
 .layoutLogo {
     height: 80px;
     width: 120px;
