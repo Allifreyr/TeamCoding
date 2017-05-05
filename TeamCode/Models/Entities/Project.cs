@@ -9,5 +9,6 @@ namespace TeamCode.Models.Entities
     {
         public int id { get; set; }
         public string projectName { get; set; }
+        //public virtual string userId { get; set; }
     }
 }

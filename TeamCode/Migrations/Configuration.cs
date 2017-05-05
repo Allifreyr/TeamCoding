@@ -10,6 +10,7 @@ namespace TeamCode.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            //AutomaticMigrationDataLossAllowed = true;
             ContextKey = "TeamCode.Models.ApplicationDbContext";
         }
 
