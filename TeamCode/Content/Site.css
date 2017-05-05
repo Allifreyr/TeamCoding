@@ -155,8 +155,8 @@ footer a {
 
 #editor { 
         position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
+        top: 110px;
+        right: 90px;
+        bottom: 120px;
+        left: 90px;
 }
