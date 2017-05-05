@@ -18,9 +18,9 @@ namespace TeamCode.Services
 
         public List<Project> GetProjectsByUser(string userID)
         {
-           // var userProject = (from p in _db.Projects where p.userId == userID select p).ToList();
+            var userProject = (from p in _db.Projects where p.user.Id == userID select p).ToList();
            
-            return null;
+            return userProject;
         }
 
         public List<Project> GetAllProject()
@@ -34,7 +34,6 @@ namespace TeamCode.Services
             var projectListByID = (from p in _db.Projects where p.id == projectID select p).ToList();
 
             return projectListByID;
-           // var project = _db.Projects.ToList(x => x.ID == projectID);
         }
     }
 }
