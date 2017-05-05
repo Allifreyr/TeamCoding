@@ -6,13 +6,15 @@ using System.Web.Mvc;
 
 namespace TeamCode.Controllers
 {
-
-    // Kata að bulla til að geta pushað og pullað :)
-    // alexandra að bulla til að geta pushað og pullað :)
     public class HomeController : Controller
     {
         public ActionResult Index()
         {
+            if(Request.IsAuthenticated)                         //If user is logged in
+            {
+                return RedirectToAction("Index", "MyProjects"); //Redirect to Myproject
+            }
+
             return View();
         }
 

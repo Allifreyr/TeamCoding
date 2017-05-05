@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace TeamCode.Controllers
 {
-    public class ProjectController : Controller
+    public class MyProjectsController : Controller
     {
         // GET: Project
         [Authorize]

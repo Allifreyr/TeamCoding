@@ -7,8 +7,6 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/scripts/jquery-1.10.2.js")
- 
 
 </head>
 <body>
@@ -23,7 +21,14 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Team Coding", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    <li>
+                        <a href="#" class="navbar-left"><img src="http://i.imgur.com/oufSMWm.png"></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Team Coding", "Index", "MyProjects", new { area = "" }, new { @class = "navbar-brand" })</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -33,10 +38,10 @@
         @RenderBody()
         <footer>
             <p>
-               Contact us:<br />
-               Menntavegur 1, 101 Reykjavík <br />
-               T-220-Vln2 Hópur 14 <br />
-               Example@ru.is <br />
+                Contact us:<br />
+                Menntavegur 1, 101 Reykjavík <br />
+                T-220-Vln2 Hópur 14 <br />
+                Example@ru.is <br />
             </p>
             <a>@Html.ActionLink("Support", "Support", "Home")</a>
         </footer>
