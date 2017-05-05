@@ -22,14 +22,21 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+<<<<<<< HEAD
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li> @Html.ActionLink("My Projects", "Index", "Project")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Support", "Support", "Home")</li>
+=======
+                    <li>
+                        <a href="#" class="navbar-left"><img src="http://i.imgur.com/oufSMWm.png"></a>
+                    </li>
+                </ul>
+>>>>>>> 5d850dbe7b5d260328187ba559c5adfbda33c546
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Team Coding", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    <li>@Html.ActionLink("Team Coding", "Index", "MyProjects", new { area = "" }, new { @class = "navbar-brand" })</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -37,7 +44,6 @@
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
         <footer>
             <p>
                Contact us:<br />
