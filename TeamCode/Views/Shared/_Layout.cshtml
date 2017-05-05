@@ -5,8 +5,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css") 
+    @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -17,22 +18,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="#" class="navbar-left"><img src="http://i.imgur.com/oufSMWm.png"></a>
-                @Html.ActionLink("Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-<<<<<<< HEAD
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li> @Html.ActionLink("My Projects", "Index", "Project")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Support", "Support", "Home")</li>
-=======
                     <li>
                         <a href="#" class="navbar-left"><img src="http://i.imgur.com/oufSMWm.png"></a>
                     </li>
                 </ul>
->>>>>>> 5d850dbe7b5d260328187ba559c5adfbda33c546
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -46,10 +38,10 @@
         @RenderBody()
         <footer>
             <p>
-               Contact us:<br />
-               Menntavegur 1, 101 Reykjavík <br />
-               T-220-Vln2 Hópur 14 <br />
-               Example@ru.is <br />
+                Contact us:<br />
+                Menntavegur 1, 101 Reykjavík <br />
+                T-220-Vln2 Hópur 14 <br />
+                Example@ru.is <br />
             </p>
             <a>@Html.ActionLink("Support", "Support", "Home")</a>
         </footer>
