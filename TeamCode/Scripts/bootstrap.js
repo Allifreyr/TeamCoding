@@ -1681,7 +1681,7 @@ if(!jQuery) { throw new Error("Bootstrap requires jQuery") }
       activeTarget != targets[i]
         && scrollTop >= offsets[i]
         &&(!offsets[i + 1] || scrollTop <= offsets[i + 1])
-        && this.activate(targets[i] )
+        && this.activate(targets[i])
     }
   }
 
@@ -1854,7 +1854,7 @@ if(!jQuery) { throw new Error("Bootstrap requires jQuery") }
 
   var old = $.fn.tab
 
-  $.fn.tab = function(option ) {
+  $.fn.tab = function(option) {
     return this.each(function() {
       var $this = $(this)
       var data  = $this.data('bs.tab')
