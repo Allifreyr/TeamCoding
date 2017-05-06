@@ -23,7 +23,7 @@ namespace TeamCode.Controllers
         {
             string userId = User.Identity.GetUserId();
             ProjectService.Instance.AddNewProject(userId);
-            return View();
+            return RedirectToAction("Index", "MyProjects");
         }
     }
 }

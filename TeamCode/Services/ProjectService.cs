@@ -57,7 +57,9 @@ namespace TeamCode.Services
         {
             Project project = new Project();
             project.projectName = "Untitled";
-            project.user.Id = userId;
+            project.user = (from u in _db.Users
+                            where u.Id == userId
+                            select u).SingleOrDefault();
 
             _db.Projects.Add(project);
             _db.SaveChanges();
