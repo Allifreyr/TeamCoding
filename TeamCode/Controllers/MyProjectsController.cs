@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using TeamCode.Services;
 using TeamCode.Models.Entities;
+using Microsoft.AspNet.Identity;
 
 namespace TeamCode.Controllers
 {
@@ -15,6 +16,13 @@ namespace TeamCode.Controllers
         [Authorize]
         public ActionResult Index()
         {
+            return View();
+        }
+
+        public ActionResult CreateProject()
+        {
+            string userId = User.Identity.GetUserId();
+            ProjectService.Instance.AddNewProject(userId);
             return View();
         }
     }

@@ -9,11 +9,28 @@ namespace TeamCode.Services
 {
     public class ProjectService
     {
+        private static ProjectService instance;
+
+        public static ProjectService Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new ProjectService();
+                return instance;
+            }
+        }
+
         private ApplicationDbContext _db;
 
         public ProjectService()
         {
             _db = new ApplicationDbContext();
+        }
+
+        internal Project AddNewProject()
+        {
+            throw new NotImplementedException();
         }
 
         public List<Project> GetProjectsByUser(string userID)
