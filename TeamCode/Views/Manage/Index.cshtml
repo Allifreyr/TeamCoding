@@ -13,7 +13,7 @@
         <dt>Password:</dt>
         <dd>
             [
-            @if (Model.HasPassword)
+            @if(Model.HasPassword)
             {
                 @Html.ActionLink("Change your password", "ChangePassword")
             }
@@ -40,7 +40,7 @@
             <dt>Phone Number:</dt>
             <dd>
                 @(Model.PhoneNumber ?? "None")
-                @if (Model.PhoneNumber != null)
+                @if(Model.PhoneNumber != null)
                 {
                     <br />
                     <text>[&nbsp;&nbsp;@Html.ActionLink("Change", "AddPhoneNumber")&nbsp;&nbsp;]</text>

@@ -61,7 +61,6 @@ namespace TeamCode.Controllers
             return View();
         }
 
-        // Diemut test
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]

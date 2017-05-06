@@ -11,7 +11,6 @@ namespace TeamCode.Controllers
         // GET: CodeWrite
         public ActionResult Index()
         {
-
             return View();
         }
 
