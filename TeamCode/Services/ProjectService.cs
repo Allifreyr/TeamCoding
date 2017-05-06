@@ -35,5 +35,16 @@ namespace TeamCode.Services
 
             return projectListByID;
         }
+        /*
+        public void AddNewProject()
+        {
+            Project project = new Project();
+            project.projectName = "test";
+            //project.user = ;
+            
+            //_db.Projects.Insertstuff
+            //_db.submitstuff
+        }
+        */
     }
 }

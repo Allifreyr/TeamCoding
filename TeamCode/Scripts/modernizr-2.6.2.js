@@ -523,7 +523,7 @@ window.Modernizr =(function(window, document, undefined) {
     // documentMode logic from YUI to filter out IE8 Compat Mode
     //   which false positives.
     tests['hashchange'] = function() {
-      return isEventSupported('hashchange', window) &&(document.documentMode === undefined || document.documentMode > 7);
+      return isEventSupported('hashchange', window) && (document.documentMode === undefined || document.documentMode > 7);
     };
 
     // Per 1.6:
@@ -1208,7 +1208,7 @@ window.Modernizr =(function(window, document, undefined) {
 
         ownerDocument.createDocumentFragment = Function('h,f', 'return function(){' +
           'var n=f.cloneNode(),c=n.createElement;' +
-          'h.shivMethods&&(' +
+          'h.shivMethods&& (' +
             // unroll the `createElement` calls
             getElements().join().replace(/\w+/g, function(nodeName) {
               data.createElem(nodeName);
