@@ -209,7 +209,7 @@ $.validator.format = function(source, params) {
 			return $.validator.format.apply(this, args);
 		};
 	}
-	if(arguments.length > 2 && params.constructor !== Array ) {
+	if(arguments.length > 2 && params.constructor !== Array) {
 		params = $.makeArray(arguments).slice(1);
 	}
 	if(params.constructor !== Array) {

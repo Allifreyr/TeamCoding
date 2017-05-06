@@ -17,7 +17,7 @@ intellisense.annotate(jQuery, {
     /// <signature>
     ///   <summary>Perform an asynchronous HTTP (Ajax) request.</summary>
     ///   <param name="url" type="String">A string containing the URL to which the request is sent.</param>
-    ///   <param name="settings" type="PlainObject">A set of key/value pairs that configure the Ajax request. All settings are optional. A default can be set for any option with $.ajaxSetup(). See jQuery.ajax( settings ) below for a complete list of all settings.</param>
+    ///   <param name="settings" type="PlainObject">A set of key/value pairs that configure the Ajax request. All settings are optional. A default can be set for any option with $.ajaxSetup(). See jQuery.ajax(settings) below for a complete list of all settings.</param>
     ///   <returns type="jqXHR" />
     /// </signature>
     /// <signature>
@@ -265,7 +265,7 @@ intellisense.annotate(jQuery, {
     /// <signature>
     ///   <summary>Translate all items in an array or object to new array of items.</summary>
     ///   <param name="arrayOrObject" type="Object">The Array or Object to translate.</param>
-    ///   <param name="callback( value, indexOrKey )" type="Function">The function to process each item against.  The first argument to the function is the value; the second argument is the index or key of the array or object property. The function can return any value to add to the array. A returned array will be flattened into the resulting array. Within the function, this refers to the global (window) object.</param>
+    ///   <param name="callback(value, indexOrKey)" type="Function">The function to process each item against.  The first argument to the function is the value; the second argument is the index or key of the array or object property. The function can return any value to add to the array. A returned array will be flattened into the resulting array. Within the function, this refers to the global (window) object.</param>
     ///   <returns type="Array" />
     /// </signature>
   },
@@ -1895,25 +1895,25 @@ intellisense.annotate(jQuery.fn, {
   'nth-child': function() {
     /// <signature>
     ///   <summary>Selects all elements that are the nth-child of their parent.</summary>
-    ///   <param name="index" type="String">The index of each child to match, starting with 1, the string even or odd, or an equation ( eg. :nth-child(even), :nth-child(4n) )</param>
+    ///   <param name="index" type="String">The index of each child to match, starting with 1, the string even or odd, or an equation (eg. :nth-child(even), :nth-child(4n))</param>
     /// </signature>
   },
   'nth-last-child': function() {
     /// <signature>
     ///   <summary>Selects all elements that are the nth-child of their parent, counting from the last element to the first.</summary>
-    ///   <param name="index" type="String">The index of each child to match, starting with the last one (1), the string even or odd, or an equation ( eg. :nth-last-child(even), :nth-last-child(4n) )</param>
+    ///   <param name="index" type="String">The index of each child to match, starting with the last one (1), the string even or odd, or an equation (eg. :nth-last-child(even), :nth-last-child(4n))</param>
     /// </signature>
   },
   'nth-last-of-type': function() {
     /// <signature>
     ///   <summary>Selects all elements that are the nth-child of their parent, counting from the last element to the first.</summary>
-    ///   <param name="index" type="String">The index of each child to match, starting with the last one (1), the string even or odd, or an equation ( eg. :nth-last-of-type(even), :nth-last-of-type(4n) )</param>
+    ///   <param name="index" type="String">The index of each child to match, starting with the last one (1), the string even or odd, or an equation (eg. :nth-last-of-type(even), :nth-last-of-type(4n))</param>
     /// </signature>
   },
   'nth-of-type': function() {
     /// <signature>
     ///   <summary>Selects all elements that are the nth child of their parent in relation to siblings with the same element name.</summary>
-    ///   <param name="index" type="String">The index of each child to match, starting with 1, the string even or odd, or an equation ( eg. :nth-of-type(even), :nth-of-type(4n) )</param>
+    ///   <param name="index" type="String">The index of each child to match, starting with 1, the string even or odd, or an equation (eg. :nth-of-type(even), :nth-of-type(4n))</param>
     /// </signature>
   },
   'odd': function() {
@@ -2145,7 +2145,7 @@ intellisense.annotate(jQuery.fn, {
     /// <signature>
     ///   <summary>Manipulate the queue of functions to be executed, once for each matched element.</summary>
     ///   <param name="queueName" type="String">A string containing the name of the queue. Defaults to fx, the standard effects queue.</param>
-    ///   <param name="callback( next )" type="Function">The new function to add to the queue, with a function to call that will dequeue the next item.</param>
+    ///   <param name="callback(next)" type="Function">The new function to add to the queue, with a function to call that will dequeue the next item.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -2242,7 +2242,7 @@ intellisense.annotate(jQuery.fn, {
   'root': function() {
     /// <signature>
     ///   <summary>Selects the element that is the root of the document.</summary>
-    ///   <param name="index" type="String">The index of each child to match, starting with 1, the string even or odd, or an equation ( eg. :nth-last-child(even), :nth-last-child(4n) )</param>
+    ///   <param name="index" type="String">The index of each child to match, starting with 1, the string even or odd, or an equation (eg. :nth-last-child(even), :nth-last-child(4n))</param>
     /// </signature>
   },
   'scroll': function() {
@@ -2526,7 +2526,7 @@ intellisense.annotate(jQuery.fn, {
     /// <signature>
     ///   <summary>Remove a previously-attached event handler from the elements.</summary>
     ///   <param name="eventType" type="String">A string containing a JavaScript event type, such as click or submit.</param>
-    ///   <param name="false" type="Boolean">Unbinds the corresponding 'return false' function that was bound using .bind( eventType, false ).</param>
+    ///   <param name="false" type="Boolean">Unbinds the corresponding 'return false' function that was bound using .bind(eventType, false).</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
