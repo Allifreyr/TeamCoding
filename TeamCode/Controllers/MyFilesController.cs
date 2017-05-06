@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using TeamCode.Services;
-using TeamCode.Models.Entities;
 
 namespace TeamCode.Controllers
 {
-    public class MyProjectsController : Controller
+    public class MyFilesController : Controller
     {
         
-        // GET: Project
-        [Authorize]
+        // GET: MyFiles
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult Create()
         {
             return View();
         }
