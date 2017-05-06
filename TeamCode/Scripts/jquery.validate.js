@@ -250,7 +250,7 @@ $.extend($.validator, {
 			}
 		},
 		onfocusout: function(element, event) {
-			if(!this.checkable(element) &&(element.name in this.submitted || !this.optional(element))) {
+			if(!this.checkable(element) && (element.name in this.submitted || !this.optional(element))) {
 				this.element(element);
 			}
 		},
@@ -604,7 +604,7 @@ $.extend($.validator, {
 		// return the custom message for the given element name and validation method
 		customMessage: function(name, method) {
 			var m = this.settings.messages[name];
-			return m &&(m.constructor === String ? m : m[method]);
+			return m && (m.constructor === String ? m : m[method]);
 		},
 
 		// return the first defined argument, allowing empty strings
@@ -875,7 +875,7 @@ $.extend($.validator, {
 
 			// convert the value to a number for number inputs, and for text for backwards compability
 			// allows type="date" and others to be compared as strings
-			if(/min|max/.test(method) &&(type === null || /number|range|text/.test(type))) {
+			if(/min|max/.test(method) && (type === null || /number|range|text/.test(type))) {
 				value = Number(value);
 			}
 
