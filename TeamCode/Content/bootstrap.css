@@ -4037,7 +4037,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar:after {
-  clear: both;
+    clear: both;
 }
 
 .navbar:before,
@@ -4047,7 +4047,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar:after {
-  clear: both;
+    clear: both;
 }
 
 @media (min-width: 768px) {
@@ -4078,7 +4078,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 @media (min-width: 768px) {
   .navbar-header {
-    float: left;
+      float: left;
   }
 }
 
