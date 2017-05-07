@@ -1,14 +1,17 @@
-﻿@*@model IEnumerable<TeamCode.Models.Entities.Project>*@
+﻿@model List<TeamCode.Models.Entities.File>
 
 @{
     ViewBag.Title = "Index";
 }
 
 <h62>My Files</h62>
+@ViewBag.ProjectID
 
 <p>List of My Files</p>
 
-<a href='@Url.Action("CreateFile","MyFiles")'>
-    <img src="http://img.freepik.com/free-icon/text-file-add-outlined-interface-button_318-74517.jpg?size=338&ext=jpg" style="width: 66px; height: 66px;" />
-</a>
+
+    <a href='@Url.Action("CreateFile","MyFiles", new { id = ViewContext.RouteData.Values["ID"]})'>
+        <img src="http://img.freepik.com/free-icon/text-file-add-outlined-interface-button_318-74517.jpg?size=338&ext=jpg" style="width: 66px; height: 66px;" />
+    </a>
+
 
