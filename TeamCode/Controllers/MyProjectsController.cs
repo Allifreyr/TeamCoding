@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using TeamCode.Services;
 using TeamCode.Models.Entities;
 using Microsoft.AspNet.Identity;
+using TeamCode.Models;
 
 namespace TeamCode.Controllers
 {
@@ -16,7 +17,11 @@ namespace TeamCode.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            return View();
+            var datacontext = new ApplicationDbContext();
+            string userId = User.Identity.GetUserId();
+            var projects = ProjectService.Instance.GetProjectsByUser(userId);
+            return View(projects);
+            
         }
 
         public ActionResult CreateProject()
