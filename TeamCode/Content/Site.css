@@ -168,9 +168,17 @@ footer a {
 }
 
 #editor { 
-        position: absolute;
-        top: 110px;
+        /*/position: absolute;
+        top: 120px;
         right: 90px;
         bottom: 120px;
-        left: 90px;
+        left: 90px;*/
+        height:426px;
+}
+#hidden_editor {
+    margin-left:10px;
+}
+
+.editorSave {
+    padding-left: 0px; 
 }

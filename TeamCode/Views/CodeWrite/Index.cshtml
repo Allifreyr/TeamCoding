@@ -1,21 +1,29 @@
-﻿
+﻿@model TeamCode.Models.CodeWriteViewModel
+
 @{
-    ViewBag.Title = "View";
+    ViewBag.Title = "Index";
 }
 
-<h2>View</h2>
+@using (Html.BeginForm("SaveCode", "CodeWrite", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Content, new { @id = "hidden_editor" })
+    <input type="submit" class="editorSave" value="Save" />
+}
 
 <div id="editor">
-    function foo(items) {
-    var x = "All this is syntax highlighted";
-    return x;
-    }
+    @ViewBag.Code
 </div>
 
-<!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js"></script>-->
-@Scripts.Render("https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js")
+@section scripts
+{
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js" type="text/javascript" charset="utf-8"></script>
+@*@Scripts.Render("https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js")*@
 <script>
     var editor = ace.edit("editor");
     editor.setTheme("ace/theme/monokai");
     editor.getSession().setMode("ace/mode/javascript");
+    $("form").submit(function() {
+        $("#hidden_editor").val(editor.getSession().getValue());
+    });
 </script>
+}

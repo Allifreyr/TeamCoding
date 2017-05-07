@@ -210,6 +210,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CodeWriteViewModel.cs" />
     <Compile Include="Models\Entities\File.cs" />
     <Compile Include="Models\Entities\Project.cs" />
     <Compile Include="Models\Entities\UserToProject.cs" />
