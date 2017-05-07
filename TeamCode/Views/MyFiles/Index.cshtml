@@ -1,14 +1,41 @@
-﻿@*@model IEnumerable<TeamCode.Models.Entities.Project>*@
+﻿@model List<TeamCode.Models.Entities.File>
 
 @{
     ViewBag.Title = "Index";
 }
 
 <h62>My Files</h62>
+@ViewBag.ProjectID
 
 <p>List of My Files</p>
 
-<a href='@Url.Action("CreateFile","MyFiles")'>
-    <img src="https://cdn3.iconfinder.com/data/icons/files/100/237046-folder_add_plus-512.png" style="width: 66px; height: 66px;" />
-</a>
+
+    <a href='@Url.Action("CreateFile","MyFiles", new { id = ViewContext.RouteData.Values["ID"]})'>
+        <img src="http://img.freepik.com/free-icon/text-file-add-outlined-interface-button_318-74517.jpg?size=338&ext=jpg" style="width: 66px; height: 66px;" />
+    </a>
+
+<table class="table">
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <a href='@Url.Action("Index","CodeWrite", new { id = item.id })'>
+                    <img alt="file" src="/../file.png" style="width: 66px; height: 66px;" />
+                </a>
+                @*@Html.DisplayFor(modelItem => item.id)*@
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fileName)
+            </td>
+            <td>
+                @*<div class="btn-group btn-group-sm" role="group" aria-label="...">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-default" })
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-default" })
+                    </div>*@
+            </td>
+        </tr>
+    }
+
+</table>
 

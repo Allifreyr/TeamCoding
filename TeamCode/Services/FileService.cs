@@ -51,9 +51,12 @@ namespace TeamCode.Services
 
             return fileListByID;
         }
-        public void AddNewFile(string userId)
+        public void AddNewFile(string userId, int projectId)
         {
             File file = new File();
+            file.project = (from p in _db.Projects
+                            where p.id == projectId
+                            select p).SingleOrDefault();
             file.fileName = "Untitled";
             file.user = (from u in _db.Users
                             where u.Id == userId
