@@ -280,10 +280,10 @@
     <Content Include="Views\MyProjects\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutForStartPage.cshtml" />
     <Content Include="Views\CodeWrite\Index.cshtml" />
+    <Content Include="Views\MyFiles\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\MyFiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
