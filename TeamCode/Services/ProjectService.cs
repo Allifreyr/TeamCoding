@@ -33,7 +33,7 @@ namespace TeamCode.Services
             throw new NotImplementedException();
         }
 
-        public List<Project> GetProjectsByUser(string userID)
+       public List<Project> GetProjectsByUser(string userID)
         {
             var userProject = (from p in _db.Projects where p.user.Id == userID select p).ToList();
            
@@ -64,6 +64,8 @@ namespace TeamCode.Services
             _db.Projects.Add(project);
             _db.SaveChanges();
         }
+
+
         
     }
 }
