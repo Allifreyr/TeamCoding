@@ -7,6 +7,7 @@
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    padding-bottom: 86px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -52,7 +53,7 @@ footer {
     border-top-style: solid;
     border-width: 1px;
     
-    position: absolute;
+    position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
