@@ -10,7 +10,7 @@
 
 
 <a href='@Url.Action("CreateProject","MyProjects")'>
-    <img src="https://cdn3.iconfinder.com/data/icons/files/100/237046-folder_add_plus-512.png" style="width: 66px; height: 66px;" />
+    <img alt ="create new project folder" src="https://cdn3.iconfinder.com/data/icons/files/100/237046-folder_add_plus-512.png" style="width: 66px; height: 66px;" />
 </a>
 
     <table class="table">
@@ -19,7 +19,10 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.id)
+                    <a href='@Url.Action("Index","MyFiles")'>
+                        <img alt = "project folder" src="/../folder.png" style="width: 66px; height: 66px;" />
+                    </a>
+                    @*@Html.DisplayFor(modelItem => item.id)*@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.projectName)
