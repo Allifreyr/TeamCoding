@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TeamCode.Models;
 
 namespace TeamCode.Controllers
 {
@@ -11,9 +12,10 @@ namespace TeamCode.Controllers
         // GET: CodeWrite
         public ActionResult Index()
         {
+            ViewBag.Code = "alert('Hello world!');";
             return View();
         }
-
+        
         // GET: CodeWrite/Edit/5
         public ActionResult Edit(int id)
         {
@@ -34,6 +36,11 @@ namespace TeamCode.Controllers
             {
                 return View();
             }
+        }
+        [HttpPost]
+        public ActionResult SaveCode(CodeWriteViewModel model)
+        { 
+            return View("CodeWrite");
         }
     }
 }
