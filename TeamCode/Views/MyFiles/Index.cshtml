@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h62>My Files</h62>
+<p>My Files</p>
 @ViewBag.ProjectID
 
 <p>List of My Files</p>
@@ -21,7 +21,7 @@
         <tr>
             <td>
                 <a href='@Url.Action("Index","CodeWrite", new { id = item.id })'>
-                    <img alt="file" src="/../file.png" style="width: 66px; height: 66px;" />
+                    <img alt="file" src="~/img/file.png" style="width: 66px; height: 66px;" />
                 </a>
                 @*@Html.DisplayFor(modelItem => item.id)*@
             </td>

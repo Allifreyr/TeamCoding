@@ -7,7 +7,9 @@
 @using (Html.BeginForm("SaveCode", "CodeWrite", FormMethod.Post))
 {
     @Html.HiddenFor(m => m.Content, new { @id = "hidden_editor" })
-    <input type="submit" class="editorSave" value="Save" />
+    <a href='@Url.Action("SaveCode","CodeWrite")'>
+        <img class="editorSave" src="http://www.myiconfinder.com/uploads/iconsets/256-256-5522ef02c3bcb2c8389eda0bbc2f4815.png" style="width: 33px; height: 33px;" />
+    </a>
 }
 
 <div id="editor">
