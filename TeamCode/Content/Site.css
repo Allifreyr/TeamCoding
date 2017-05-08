@@ -180,5 +180,7 @@ footer a {
 }
 
 .editorSave {
-    padding-left: 0px; 
+    position: absolute;
+    right: 1.5%;
+    top: 13%;
 }
