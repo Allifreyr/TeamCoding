@@ -60,7 +60,6 @@ namespace TeamCode.Controllers
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            //ViewBag.id = new SelectList(proj.projectName);
             return View(proj);
         }
     }
