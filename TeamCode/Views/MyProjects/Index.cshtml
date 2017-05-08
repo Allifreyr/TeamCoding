@@ -27,6 +27,9 @@
                 <td>
                         @Html.DisplayFor(modelItem => item.projectName)
                 </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id })
+                </td>
                 @*<td>
                     <a href='@Url.Action("Index","MyFiles", new { id = item.id })'>
                         Share

@@ -8,12 +8,14 @@ using TeamCode.Models.Entities;
 using Microsoft.AspNet.Identity;
 using TeamCode.Models;
 using System.Net;
+using System.Data.Entity;
 
 namespace TeamCode.Controllers
 {
     public class MyProjectsController : Controller
     {
-        
+        private ApplicationDbContext _db = new ApplicationDbContext();
+
         // GET: Project
         [Authorize]
         public ActionResult Index()
@@ -39,8 +41,27 @@ namespace TeamCode.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            Project proj = ProjectService.Instance.GetProjectByID(id.Value);
+            if(proj == null)
+            {
+                return HttpNotFound();
+            }
 
-            return RedirectToAction("Index", "MyProjects");
+            return View(proj);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "id,projectName,user")] Project proj)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Entry(proj).State = EntityState.Modified;
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            //ViewBag.id = new SelectList(proj.projectName);
+            return View(proj);
         }
     }
 }

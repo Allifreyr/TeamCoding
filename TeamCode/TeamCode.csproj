@@ -302,6 +302,7 @@
     <Content Include="Views\Shared\_LayoutForStartPage.cshtml" />
     <Content Include="Views\CodeWrite\Index.cshtml" />
     <Content Include="Views\MyFiles\Index.cshtml" />
+    <Content Include="Views\MyProjects\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
