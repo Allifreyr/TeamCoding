@@ -8,7 +8,7 @@
 {
     @Html.HiddenFor(m => m.Content, new { @id = "hidden_editor" })
     <a href='@Url.Action("SaveCode","CodeWrite")'>
-        <img class="editorSave" src="http://www.myiconfinder.com/uploads/iconsets/256-256-5522ef02c3bcb2c8389eda0bbc2f4815.png" style="width: 33px; height: 33px;" />
+        <img class="editorSave" src="~/img/save.png" style="width: 33px; height: 33px;" />
     </a>
 }
 
@@ -20,12 +20,45 @@
 {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js" type="text/javascript" charset="utf-8"></script>
 @*@Scripts.Render("https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js")*@
+
+@*SignalR connection*@
+<script src="~/Scripts/jquery.signalR-2.2.2.js"></script>
+<script src="~/signalr/hubs"></script>
+
 <script>
+
+    var documentID = @ViewBag.documentID;
+
     var editor = ace.edit("editor");
     editor.setTheme("ace/theme/monokai");
     editor.getSession().setMode("ace/mode/javascript");
     $("form").submit(function() {
         $("#hidden_editor").val(editor.getSession().getValue());
     });
+
+    var codeHub = $.connection.codeHub;
+    var silent = false;
+
+    codeHub.client.onChange = function (changeData) {
+        console.log(changeData);
+
+        silent = true;
+        editor.getSession().getDocument().applyDelta(changeData);
+        silent = false;
+    };
+
+    $.connection.hub.start().done(function () {
+
+        codeHub.server.joinDocument(documentID); // fileId
+
+        editor.on("change", function (obj) {
+            if (silent) {
+                return;
+            }
+            console.log(obj);
+            codeHub.server.onChange(obj, documentID);
+        });
+    });
+
 </script>
 }
