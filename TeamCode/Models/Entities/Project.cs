@@ -10,6 +10,7 @@ namespace TeamCode.Models.Entities
     {
         [Key]
         public int id { get; set; }
+        [Required(ErrorMessage = "Name of project is required!")]
         public string projectName { get; set; }
 
         public virtual ApplicationUser user { get; set; }

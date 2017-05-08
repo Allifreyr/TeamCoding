@@ -10,8 +10,10 @@ namespace TeamCode.Models.Entities
     {
         [Key]
         public int id { get; set; }
+        [Required(ErrorMessage = "Name of file is required!")]
         public string fileName { get; set; }
         public string content { get; set; }
+        [Required(ErrorMessage = "Filetype is required!")]
         public string fileType { get; set; }
 
         public virtual Project project { get; set; }

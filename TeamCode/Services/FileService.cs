@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
+using System.Web.Mvc;
 using TeamCode.Models;
 using TeamCode.Models.Entities;
 
@@ -32,9 +34,9 @@ namespace TeamCode.Services
             throw new NotImplementedException();
         }
 
-        public List<File> GetFilesByProject(int projectID)
+        public List<File> GetFilesByProject(int? projectID)
         {
-             var filesByProject = (from f in _db.Files where f.project.id == projectID select f).ToList();
+            var filesByProject = (from f in _db.Files where f.project.id == projectID select f).ToList();
 
             return filesByProject;
         }
@@ -45,11 +47,11 @@ namespace TeamCode.Services
             return fileList;
         }
 
-        public List<File> GetFileByID(int fileID)
+        public File GetFileByID(int fileID)
         {
-            var fileListByID = (from f in _db.Files where f.id == fileID select f).ToList();
+            var fileByID = (from f in _db.Files where f.id == fileID select f).SingleOrDefault();
 
-            return fileListByID;
+            return fileByID;
         }
 
        /* public string GetProjectOwner(int projectID) // Virkar ekki - Kata
@@ -66,6 +68,7 @@ namespace TeamCode.Services
                             where p.id == projectId
                             select p).SingleOrDefault();
             file.fileName = "Untitled";
+            file.fileType = ".js";
             file.user = (from u in _db.Users
                             where u.Id == userId
                             select u).SingleOrDefault();
