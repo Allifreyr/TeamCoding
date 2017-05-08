@@ -27,7 +27,8 @@ namespace TeamCode.Controllers
         public ActionResult CreateProject()
         {
             string userId = User.Identity.GetUserId();
-            ProjectService.Instance.AddNewProject(userId);
+            int projectId = ProjectService.Instance.AddNewProject(userId);
+            FileService.Instance.AddNewFile(userId, projectId, "Index", ".cs");
             return RedirectToAction("Index", "MyProjects");
         }
     }

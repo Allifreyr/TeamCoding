@@ -20,8 +20,15 @@ namespace TeamCode.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             var f = FileService.Instance.GetFilesByProject(id.Value);
+
+            var p = ProjectService.Instance.GetProjectByID(id.Value);
+            ViewBag.ProjectName = p.projectName;
+            ViewBag.ProjectOwner = p.user.UserName;
+
             ViewBag.ProjectID = id.Value;
+
             return View(f);
         }
 
@@ -38,7 +45,6 @@ namespace TeamCode.Controllers
             FileService.Instance.AddNewFile(userId, projectId);
             return RedirectToAction("Index", "Myfiles", new { id = projectId });
 
-           // return View();
         }
     }
 }

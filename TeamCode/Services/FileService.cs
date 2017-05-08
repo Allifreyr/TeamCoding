@@ -51,6 +51,14 @@ namespace TeamCode.Services
 
             return fileListByID;
         }
+
+       /* public string GetProjectOwner(int projectID) // Virkar ekki - Kata
+        {
+            File userByID = (from f in _db.Files where f.project.id == projectID select f).SingleOrDefault();
+
+            return userByID.user.UserName;
+        }*/
+
         public void AddNewFile(string userId, int projectId)
         {
             File file = new File();
@@ -61,6 +69,21 @@ namespace TeamCode.Services
             file.user = (from u in _db.Users
                             where u.Id == userId
                             select u).SingleOrDefault();
+            _db.Files.Add(file);
+            _db.SaveChanges();
+        }
+
+        public void AddNewFile(string userId, int projectId, string fileName, string fileType)
+        {
+            File file = new File();
+            file.project = (from p in _db.Projects
+                            where p.id == projectId
+                            select p).SingleOrDefault();
+            file.fileName = fileName;
+            file.fileType = fileType;
+            file.user = (from u in _db.Users
+                         where u.Id == userId
+                         select u).SingleOrDefault();
             _db.Files.Add(file);
             _db.SaveChanges();
         }

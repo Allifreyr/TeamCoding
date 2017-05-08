@@ -27,6 +27,14 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.projectName)
                 </td>
+                @*<td>
+                    <a href='@Url.Action("Index","MyFiles", new { id = item.id })'>
+                        Share
+                    </a>
+                 </td>*@
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.user.UserName)
+                </td>*@
                 <td>
                     @*<div class="btn-group btn-group-sm" role="group" aria-label="...">
                         @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-default" })
