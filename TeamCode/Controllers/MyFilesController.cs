@@ -7,11 +7,15 @@ using TeamCode.Services;
 using TeamCode.Models.Entities;
 using Microsoft.AspNet.Identity;
 using System.Net;
+using TeamCode.Models;
+using System.Data.Entity;
 
 namespace TeamCode.Controllers
 {
     public class MyFilesController : Controller
     {
+        private ApplicationDbContext _db = new ApplicationDbContext();
+
         // GET: MyFiles
         [Authorize]
         public ActionResult Index(int? id)
@@ -45,6 +49,34 @@ namespace TeamCode.Controllers
             FileService.Instance.AddNewFile(userId, projectId);
             return RedirectToAction("Index", "Myfiles", new { id = projectId });
 
+        }
+
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            File file = FileService.Instance.GetFileByID(id.Value);
+            if (file == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(file);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "id,fileName,content,fileType,project,user")] File file)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Entry(file).State = EntityState.Modified;
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(file);
         }
     }
 }
