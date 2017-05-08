@@ -46,14 +46,14 @@ namespace TeamCode.Services
             return projectList;
         }
 
-        public List<Project> GetProjectByID(int projectID)
+        public Project GetProjectByID(int projectID)
         {
-            var projectListByID = (from p in _db.Projects where p.id == projectID select p).ToList();
+            var projectByID = (from p in _db.Projects where p.id == projectID select p).SingleOrDefault();
 
-            return projectListByID;
+            return projectByID;
         }
         
-        public void AddNewProject(string userId)
+        public int AddNewProject(string userId)
         {
             Project project = new Project();
             project.projectName = "Untitled";
@@ -63,6 +63,8 @@ namespace TeamCode.Services
 
             _db.Projects.Add(project);
             _db.SaveChanges();
+
+            return project.id;
         }
 
 

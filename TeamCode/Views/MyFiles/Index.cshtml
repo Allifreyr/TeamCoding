@@ -4,8 +4,16 @@
     ViewBag.Title = "Index";
 }
 
+<<<<<<< HEAD
 <p>My Files</p>
  
+=======
+<h2>@ViewBag.ProjectName</h2>
+<p>Owner: @ViewBag.ProjectOwner</p>
+
+<p>List of My Files</p>
+
+>>>>>>> e07d766be715fcb54b9aa425932e8ce68776d4d0
 
     <a href='@Url.Action("CreateFile","MyFiles", new { id = ViewContext.RouteData.Values["ID"]})'>
         <img src="~/img/addFile.jpg" style="width: 66px; height: 66px;" />
@@ -23,7 +31,7 @@
                 @*@Html.DisplayFor(modelItem => item.id)*@
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.fileName)
+                @Html.DisplayFor(modelItem => item.fileName)@Html.DisplayFor(modelItem => item.fileType)
             </td>
             <td>
                 @*<div class="btn-group btn-group-sm" role="group" aria-label="...">
