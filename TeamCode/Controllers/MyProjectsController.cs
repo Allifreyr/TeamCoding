@@ -7,6 +7,7 @@ using TeamCode.Services;
 using TeamCode.Models.Entities;
 using Microsoft.AspNet.Identity;
 using TeamCode.Models;
+using System.Net;
 
 namespace TeamCode.Controllers
 {
@@ -28,7 +29,17 @@ namespace TeamCode.Controllers
         {
             string userId = User.Identity.GetUserId();
             int projectId = ProjectService.Instance.AddNewProject(userId);
-            FileService.Instance.AddNewFile(userId, projectId, "Index", ".cs");
+            FileService.Instance.AddNewFile(userId, projectId, "Index", ".js");
+            return RedirectToAction("Index", "MyProjects");
+        }
+
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
             return RedirectToAction("Index", "MyProjects");
         }
     }
