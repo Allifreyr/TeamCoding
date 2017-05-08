@@ -12,9 +12,9 @@ namespace TeamCode.Migrations
                 c => new
                     {
                         id = c.Int(nullable: false, identity: true),
-                        fileName = c.String(),
+                        fileName = c.String(nullable: false),
                         content = c.String(),
-                        fileType = c.String(),
+                        fileType = c.String(nullable: false),
                         project_id = c.Int(),
                         user_Id = c.String(maxLength: 128),
                     })
@@ -29,7 +29,7 @@ namespace TeamCode.Migrations
                 c => new
                     {
                         id = c.Int(nullable: false, identity: true),
-                        projectName = c.String(),
+                        projectName = c.String(nullable: false),
                         user_Id = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.id)

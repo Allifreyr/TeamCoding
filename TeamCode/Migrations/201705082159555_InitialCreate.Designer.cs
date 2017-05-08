@@ -13,7 +13,7 @@ namespace TeamCode.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201705052026518_InitialCreate"; }
+            get { return "201705082159555_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source
