@@ -5,10 +5,7 @@
 }
 
 <p>My Files</p>
-@ViewBag.ProjectID
-
-<p>List of My Files</p>
-
+ 
 
     <a href='@Url.Action("CreateFile","MyFiles", new { id = ViewContext.RouteData.Values["ID"]})'>
         <img src="~/img/addFile.jpg" style="width: 66px; height: 66px;" />
