@@ -25,9 +25,10 @@ namespace TeamCode.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var f = FileService.Instance.GetFilesByProject(id.Value);
+            var f = _db.Files.Where(ta => ta.project.id == id).ToList();
 
             var p = ProjectService.Instance.GetProjectByID(id.Value);
+
             ViewBag.ProjectName = p.projectName;
             ViewBag.ProjectOwner = p.user.UserName;
 
@@ -69,7 +70,7 @@ namespace TeamCode.Controllers
                 thisFileUserId = file.user.Id;
                 if (thisFileUserId != Session["userId"].ToString())  //Check if user id for this project is yours
                 {
-                    return View("Error");                        //Project doesn't belong to you
+                    return View("Error");                            //Project doesn't belong to you
                 }
                 return View(file);
             }
@@ -86,9 +87,9 @@ namespace TeamCode.Controllers
             }
             if(ModelState.IsValid)
             {
-                dbFile.content = file.content;
+                //dbFile.content = file.content;
                 dbFile.fileName = file.fileName;
-                dbFile.fileType = file.fileType;
+                //dbFile.fileType = file.fileType;
                 _db.Entry(file).State = EntityState.Modified;
                 _db.SaveChanges();
                 return RedirectToAction("Index", new { id = dbFile.id });
