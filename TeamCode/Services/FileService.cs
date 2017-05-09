@@ -41,6 +41,13 @@ namespace TeamCode.Services
             return filesByProject;
         }
 
+        public string GetValueFromContent(int? fileID)
+        {
+            var fileByID = (from f in _db.Files where f.project.id == fileID select f).SingleOrDefault();
+
+            return fileByID.content;
+        }
+
         public List<File> GetAllFiles()
         {
             var fileList = (from f in _db.Files select f).ToList();
