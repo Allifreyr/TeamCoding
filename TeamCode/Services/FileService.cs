@@ -17,7 +17,7 @@ namespace TeamCode.Services
         {
             get
             {
-                if (instance == null)
+                if(instance == null)
                     instance = new FileService();
                 return instance;
             }
@@ -43,7 +43,7 @@ namespace TeamCode.Services
 
         public string GetValueFromContent(int? fileID)
         {
-            var fileByID = (from f in _db.Files where f.project.id == fileID select f).SingleOrDefault();
+            var fileByID = (from f in _db.Files where f.id == fileID select f).SingleOrDefault();
 
             return fileByID.content;
         }
@@ -61,12 +61,12 @@ namespace TeamCode.Services
             return fileByID;
         }
 
-       /* public string GetProjectOwner(int projectID) // Virkar ekki - Kata
+        public void SetValueToContent(int? fileID, string content)
         {
-            File userByID = (from f in _db.Files where f.project.id == projectID select f).SingleOrDefault();
 
-            return userByID.user.UserName;
-        }*/
+            var fileByID = (from f in _db.Files where f.project.id == fileID select f).SingleOrDefault();
+            fileByID.content = content;
+        }
 
         public void AddNewFile(string userId, int projectId)
         {

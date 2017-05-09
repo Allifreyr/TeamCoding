@@ -30,12 +30,12 @@ namespace TeamCode.Controllers
         // GET: UserToProjects/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            if(id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             UserToProject userToProject = db.UsersToProjects.Find(id);
-            if (userToProject == null)
+            if(userToProject == null)
             {
                 return HttpNotFound();
             }
@@ -55,7 +55,7 @@ namespace TeamCode.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id")] UserToProject userToProject)
         {
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 db.UsersToProjects.Add(userToProject);
                 db.SaveChanges();
@@ -68,12 +68,12 @@ namespace TeamCode.Controllers
         // GET: UserToProjects/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            if(id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             UserToProject userToProject = db.UsersToProjects.Find(id);
-            if (userToProject == null)
+            if(userToProject == null)
             {
                 return HttpNotFound();
             }
@@ -87,7 +87,7 @@ namespace TeamCode.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id")] UserToProject userToProject)
         {
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 db.Entry(userToProject).State = EntityState.Modified;
                 db.SaveChanges();
@@ -99,12 +99,12 @@ namespace TeamCode.Controllers
         // GET: UserToProjects/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            if(id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             UserToProject userToProject = db.UsersToProjects.Find(id);
-            if (userToProject == null)
+            if(userToProject == null)
             {
                 return HttpNotFound();
             }
@@ -124,7 +124,7 @@ namespace TeamCode.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing)
+            if(disposing)
             {
                 db.Dispose();
             }

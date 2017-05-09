@@ -37,7 +37,7 @@ namespace TeamCode.Controllers
 
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            if(id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -54,7 +54,7 @@ namespace TeamCode.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,projectName,user")] Project proj)
         {
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 _db.Entry(proj).State = EntityState.Modified;
                 _db.SaveChanges();
