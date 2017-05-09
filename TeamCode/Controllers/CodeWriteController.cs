@@ -18,7 +18,7 @@ namespace TeamCode.Controllers
         // GET: CodeWrite
         public ActionResult Index(int? id)
         {
-            if (id == null)
+            if(id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -56,7 +56,7 @@ namespace TeamCode.Controllers
         //[ValidateAntiForgeryToken]
         public ActionResult SaveCode([Bind(Include = "id,fileName,content,fileType,project,user")] File file)
         {
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 _db.Entry(file).State = EntityState.Modified;
                 _db.SaveChanges();

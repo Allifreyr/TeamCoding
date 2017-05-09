@@ -54,7 +54,7 @@
         codeHub.server.joinDocument(documentID);
 
         editor.on("change", function (obj) {
-            if (silent) {
+            if(silent) {
                 return;
             }
             console.log(obj);
