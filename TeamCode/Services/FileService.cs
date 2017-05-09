@@ -61,12 +61,12 @@ namespace TeamCode.Services
             return fileByID;
         }
 
-       /* public string GetProjectOwner(int projectID) // Virkar ekki - Kata
+        public void SetValueToContent(int? fileID, string content)
         {
-            File userByID = (from f in _db.Files where f.project.id == projectID select f).SingleOrDefault();
 
-            return userByID.user.UserName;
-        }*/
+            var fileByID = (from f in _db.Files where f.project.id == fileID select f).SingleOrDefault();
+            fileByID.content = content;
+        }
 
         public void AddNewFile(string userId, int projectId)
         {
