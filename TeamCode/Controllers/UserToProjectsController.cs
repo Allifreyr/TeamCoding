@@ -16,9 +16,15 @@ namespace TeamCode.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: UserToProjects
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            return View(db.UsersToProjects.ToList());
+            var users = from a in db.UsersToProjects
+                        select a;
+            if(!string.IsNullOrEmpty(searchString))
+            {
+                users = users.Where(s => s.user.UserName.Contains(searchString));
+            }
+            return View(users);
         }
 
         // GET: UserToProjects/Details/5

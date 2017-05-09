@@ -25,7 +25,8 @@ namespace TeamCode.Models
         public DbSet<Project> Projects { get; set; }
         public DbSet<File> Files { get; set;  }
         public DbSet<UserToProject> UsersToProjects { get; set; }
-
+        //public DbSet<ApplicationUser> AspNetUsers { get; set;  }
+    
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
