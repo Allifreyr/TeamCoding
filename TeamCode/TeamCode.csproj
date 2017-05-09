@@ -219,14 +219,15 @@
       <DependentUpon>201705082159555_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\CodeWriteViewModel.cs" />
+    <Compile Include="Models\ViewModels\UserToProjectsViewModel.cs" />
+    <Compile Include="Models\ViewModels\AccountViewModels.cs" />
+    <Compile Include="Models\ViewModels\CodeWriteViewModel.cs" />
     <Compile Include="Models\Entities\File.cs" />
     <Compile Include="Models\Entities\Project.cs" />
-    <Compile Include="Models\Entities\UserToProject.cs" />
-    <Compile Include="Models\FileViewModel.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Entities\UserToProjects.cs" />
+    <Compile Include="Models\ViewModels\FileViewModel.cs" />
+    <Compile Include="Models\ViewModels\IdentityModels.cs" />
+    <Compile Include="Models\ViewModels\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CodeWriteService.cs" />
     <Compile Include="Services\FileService.cs" />
