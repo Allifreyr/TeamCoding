@@ -20,11 +20,12 @@ namespace TeamCode.Controllers
         [Authorize]
         public ActionResult Index()
         {
-           // var datacontext = new ApplicationDbContext();
+            // var datacontext = new ApplicationDbContext();
             string userId = User.Identity.GetUserId();
+            Session["userId"] = userId;
             var projects = _db.Projects.Where(t => t.user.Id == userId);
             return View(projects);
-            
+
         }
 
         public ActionResult CreateProject()
@@ -42,14 +43,23 @@ namespace TeamCode.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Project proj = _db.Projects.Find(id);
 
-            if (proj == null)
+            Project proj = _db.Projects.Find(id);
+            if(proj == null)
             {
                 return HttpNotFound();
             }
-
-            return View(proj);
+            else if(proj.user != null)
+            {
+                string currUserId = null;
+                currUserId = proj.user.Id;
+                if(currUserId != Session["userId"].ToString())  //Check if user id for this project is yours
+                {
+                    return View("Error");                       //Project doesn't belong to you
+                }
+                return View(proj);
+            }
+            return View("Error");                               //Uh no, this shouldn't happen
         }
 
         [HttpPost]
@@ -59,19 +69,9 @@ namespace TeamCode.Controllers
 
             if(ModelState.IsValid)
             {
-                //List<UserToProject> up;
                 _db.Entry(proj).State = EntityState.Modified;
-                /*up =_db.UsersToProjects.Where(u2p => u2p.project.id.Equals(proj.id)).ToList(); 
-                foreach(UserToProject temp in up )
-                {
-                    _db.UsersToProjects.Remove(temp);
-                    temp.project = proj;
-                    _db.UsersToProjects.Add(temp);
-                    _db.Entry(temp).State = EntityState.Modified;
-                }*/
-                
+
                 _db.SaveChanges();
-                
                 return RedirectToAction("Index");
             }
             return View(proj);
