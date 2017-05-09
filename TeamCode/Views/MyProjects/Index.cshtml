@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<p>My Projects</p>
+<h2>My Projects</h2>
 
 <a href='@Url.Action("CreateProject","MyProjects")'>
     <img alt="addProject" src="~/img/addFolder.png" style="width: 66px; height: 66px;" />
@@ -22,7 +22,7 @@
                     @*@Html.DisplayFor(modelItem => item.id)*@
                 </td>
                 <td>
-                        @Html.DisplayFor(modelItem => item.projectName)
+                    @Html.DisplayFor(modelItem => item.projectName)
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.id })

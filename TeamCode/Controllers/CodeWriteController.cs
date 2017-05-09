@@ -53,7 +53,7 @@ namespace TeamCode.Controllers
         }
 
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+     //   [ValidateAntiForgeryToken]
         public ActionResult SaveCode([Bind(Include = "id,fileName,content,fileType,project,user")] File file)
         {
             if (ModelState.IsValid)

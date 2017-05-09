@@ -66,6 +66,8 @@ namespace TeamCode.Services
 
             var fileByID = (from f in _db.Files where f.project.id == fileID select f).SingleOrDefault();
             fileByID.content = content;
+
+            _db.SaveChanges();
         }
 
         public void AddNewFile(string userId, int projectId)
@@ -92,6 +94,7 @@ namespace TeamCode.Services
                             select p).SingleOrDefault();
             file.fileName = fileName;
             file.fileType = fileType;
+            file.content = "Vei virkadi - Hello World og eitthvad solleidis :D !!! .... *#&#%$! BLOB";
             file.user = (from u in _db.Users
                          where u.Id == userId
                          select u).SingleOrDefault();

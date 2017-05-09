@@ -8,8 +8,15 @@
 @using (Html.BeginForm("SaveCode", "CodeWrite", FormMethod.Post))
     {
     @Html.HiddenFor(m => m.content, new { @id = "hidden_editor" })
-    @*@<a href='@Url.Action("SaveCode","CodeWrite")'>
-            <img class="editorSave" src="~/img/save.png" style="width: 33px; height: 33px;" />
+    @Html.HiddenFor(m => m.id)
+   @* @Html.HiddenFor(m => m.fileName, new { @Value = @ViewBag.documentID })
+       @Html.HiddenFor(m => m.fileType)
+       @Html.HiddenFor(m => m.user)
+       @Html.HiddenFor(m => m.project)*@
+    @*@< a href = '@Url.Action("SaveCode","CodeWrite")' >
+
+
+             < img class="editorSave" src="~/img/save.png" style="width: 33px; height: 33px;" />
         </a>*@
     <input type="submit" value="Save code" />
 }
