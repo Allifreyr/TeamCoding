@@ -20,9 +20,9 @@ namespace TeamCode.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            var datacontext = new ApplicationDbContext();
+           // var datacontext = new ApplicationDbContext();
             string userId = User.Identity.GetUserId();
-            var projects = ProjectService.Instance.GetProjectsByUser(userId);
+            var projects = _db.Projects.Where(t => t.user.Id == userId);
             return View(projects);
             
         }
@@ -35,14 +35,16 @@ namespace TeamCode.Controllers
             return RedirectToAction("Index", "MyProjects");
         }
 
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if(id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Project proj = ProjectService.Instance.GetProjectByID(id.Value);
-            if(proj == null)
+            Project proj = _db.Projects.Find(id);
+
+            if (proj == null)
             {
                 return HttpNotFound();
             }
@@ -54,10 +56,22 @@ namespace TeamCode.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,projectName,user")] Project proj)
         {
+
             if(ModelState.IsValid)
             {
+                //List<UserToProject> up;
                 _db.Entry(proj).State = EntityState.Modified;
+                /*up =_db.UsersToProjects.Where(u2p => u2p.project.id.Equals(proj.id)).ToList(); 
+                foreach(UserToProject temp in up )
+                {
+                    _db.UsersToProjects.Remove(temp);
+                    temp.project = proj;
+                    _db.UsersToProjects.Add(temp);
+                    _db.Entry(temp).State = EntityState.Modified;
+                }*/
+                
                 _db.SaveChanges();
+                
                 return RedirectToAction("Index");
             }
             return View(proj);
