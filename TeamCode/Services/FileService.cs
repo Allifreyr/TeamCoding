@@ -43,7 +43,7 @@ namespace TeamCode.Services
 
         public string GetValueFromContent(int? fileID)
         {
-            var fileByID = (from f in _db.Files where f.project.id == fileID select f).SingleOrDefault();
+            var fileByID = (from f in _db.Files where f.id == fileID select f).SingleOrDefault();
 
             return fileByID.content;
         }

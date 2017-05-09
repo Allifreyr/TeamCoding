@@ -24,7 +24,7 @@ namespace TeamCode.Controllers
             }
 
             //ViewBag.Code = "alert('Hello world!');";
-            ViewBag.Code = FileService.Instance;
+            ViewBag.Code = FileService.Instance.GetValueFromContent(id.Value);
             ViewBag.documentID = id.Value;
 
             return View();
