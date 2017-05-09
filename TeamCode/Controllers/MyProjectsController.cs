@@ -51,9 +51,9 @@ namespace TeamCode.Controllers
             }
             else if(proj.user != null)
             {
-                string currUserId = null;
-                currUserId = proj.user.Id;
-                if(currUserId != Session["userId"].ToString())  //Check if user id for this project is yours
+                string thisProjUserId = null;
+                thisProjUserId = proj.user.Id;
+                if(thisProjUserId != Session["userId"].ToString())  //Check if user id for this project is yours
                 {
                     return View("Error");                       //Project doesn't belong to you
                 }

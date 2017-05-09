@@ -51,6 +51,7 @@ namespace TeamCode.Controllers
 
         }
 
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if(id == null)
@@ -62,8 +63,17 @@ namespace TeamCode.Controllers
             {
                 return HttpNotFound();
             }
-
-            return View(file);
+            else if(file.user != null)
+            {
+                string thisFileUserId = null;
+                thisFileUserId = file.user.Id;
+                if (thisFileUserId != Session["userId"].ToString())  //Check if user id for this project is yours
+                {
+                    return View("Error");                        //Project doesn't belong to you
+                }
+                return View(file);
+            }
+            return View("Error");
         }
 
         [HttpPost]
