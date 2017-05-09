@@ -9,6 +9,9 @@
 
 <p>Project's files</p>
 
+    <a href='@Url.Action("Index","UserToProjects", new { id = ViewContext.RouteData.Values["ID"]})'>
+        <img src="~/img/iconCog.png" style="width: 66px; height: 66px;" />
+    </a>
 
     <a href='@Url.Action("CreateFile","MyFiles", new { id = ViewContext.RouteData.Values["ID"]})'>
         <img src="~/img/addFile.jpg" style="width: 66px; height: 66px;" />

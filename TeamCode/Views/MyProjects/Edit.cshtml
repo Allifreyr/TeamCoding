@@ -1,12 +1,15 @@
 ﻿@model TeamCode.Models.Entities.Project
 
-@{ 
     <h2>ViewBag.ProjectName</h2>
 
-@using (Html.BeginForm())
+@{
+        ViewBag.Title = "Edit";
+    }
+
+    @using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
-    
+        @Html.AntiForgeryToken()
+
     <div class="form-horizontal">
         <h4>Project</h4>
         <hr />

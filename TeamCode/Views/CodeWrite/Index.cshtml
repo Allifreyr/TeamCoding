@@ -1,14 +1,20 @@
-﻿@model TeamCode.Models.Entities.File
+﻿@model TeamCode.Models.FileViewModel
 
 @{
     ViewBag.Title = "Index";
 }
+
+<h2>@ViewBag.fileName@ViewBag.fileType</h2>
 
 @*@using (Html.BeginForm("SaveCode", "CodeWrite", new { id = ViewBag.Code }, FormMethod.Post))*@
 @using (Html.BeginForm("SaveCode", "CodeWrite", FormMethod.Post))
     {
     @Html.HiddenFor(m => m.content, new { @id = "hidden_editor" })
     @Html.HiddenFor(m => m.id)
+    @Html.HiddenFor(m => m.fileType, new { @Value = ViewBag.fileType })
+    @Html.HiddenFor(m => m.projectid, new { @Value = ViewBag.projectID })
+    @Html.HiddenFor(m => m.userid, new { @Value = ViewBag.userID })
+    @Html.HiddenFor(m => m.fileName, new { @Value = ViewBag.fileName})
    @* @Html.HiddenFor(m => m.fileName, new { @Value = @ViewBag.documentID })
        @Html.HiddenFor(m => m.fileType)
        @Html.HiddenFor(m => m.user)
@@ -61,7 +67,7 @@
         codeHub.server.joinDocument(documentID);
 
         editor.on("change", function (obj) {
-            if (silent) {
+            if(silent) {
                 return;
             }
             console.log(obj);

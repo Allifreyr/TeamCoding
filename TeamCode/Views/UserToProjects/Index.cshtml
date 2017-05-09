@@ -8,6 +8,14 @@
 
 <p>
     @Html.ActionLink("Create New", "Create")
+
+    @using (Html.BeginForm())
+    {
+        <p>
+            Username: @Html.TextBox("SearchString")<br/>
+            <input type="submit"value="Search"/>
+        </p>
+    }
 </p>
 <table class="table">
     <tr>
@@ -25,3 +33,11 @@
 }
 
 </table>
+
+<script>
+    $(function () {
+        $("#searchBtn").click(function () {
+            window.location.assign("TeamCode/Views/MyProjects/Index.cshtml");
+        })
+    })
+</script>

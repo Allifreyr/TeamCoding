@@ -38,7 +38,7 @@ namespace TeamCode.Controllers
 
         public ActionResult CreateFile(int? id)
         {
-            if (id == null)
+            if(id == null)
             {
 
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -53,12 +53,12 @@ namespace TeamCode.Controllers
 
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            if(id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             File file = FileService.Instance.GetFileByID(id.Value);
-            if (file == null)
+            if(file == null)
             {
                 return HttpNotFound();
             }
@@ -67,14 +67,21 @@ namespace TeamCode.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,fileName,content,fileType,project,user")] File file)
+        public ActionResult Edit(File file)
         {
-            if (ModelState.IsValid)
+            File dbFile = _db.Files.Where(x => x.id == file.id).SingleOrDefault();
+            if(dbFile == null)
             {
+                return View("Error");
+            }
+            if(ModelState.IsValid)
+            {
+                dbFile.content = file.content;
+                dbFile.fileName = file.fileName;
+                dbFile.fileType = file.fileType;
                 _db.Entry(file).State = EntityState.Modified;
                 _db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { id = dbFile.id });
             }
             return View(file);
         }

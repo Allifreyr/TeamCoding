@@ -17,7 +17,7 @@ namespace TeamCode.Services
         {
             get
             {
-                if (instance == null)
+                if(instance == null)
                     instance = new FileService();
                 return instance;
             }
@@ -39,6 +39,36 @@ namespace TeamCode.Services
             var filesByProject = (from f in _db.Files where f.project.id == projectID select f).ToList();
 
             return filesByProject;
+        }
+
+        internal dynamic GetFileProjectID(int? fileID)
+        {
+            var fileByID = (from f in _db.Files where f.id == fileID select f).SingleOrDefault();
+
+            return fileByID.project;
+        }
+
+        internal string GetFileName(int? fileID)
+        {
+            var fileByID = (from f in _db.Files where f.id == fileID select f).SingleOrDefault();
+
+            return fileByID.fileName;
+        }
+
+        internal dynamic GetFileUserID(int? fileID)
+        {
+            File fileByID = _db.Files.Find(fileID);
+                
+                //(from f in _db.Files where f.id == fileID select f).SingleOrDefault();
+
+            return fileByID.user;
+        }
+
+        internal string GetFileType(int? fileID)
+        {
+            var fileByID = (from f in _db.Files where f.id == fileID select f).SingleOrDefault();
+
+            return fileByID.fileType;
         }
 
         public string GetValueFromContent(int? fileID)
