@@ -1,15 +1,17 @@
-﻿@model TeamCode.Models.CodeWriteViewModel
+﻿@model TeamCode.Models.Entities.File
 
 @{
     ViewBag.Title = "Index";
 }
 
+@*@using (Html.BeginForm("SaveCode", "CodeWrite", new { id = ViewBag.Code }, FormMethod.Post))*@
 @using (Html.BeginForm("SaveCode", "CodeWrite", FormMethod.Post))
-{
-    @Html.HiddenFor(m => m.Content, new { @id = "hidden_editor" })
-    <a href='@Url.Action("SaveCode","CodeWrite")'>
-        <img class="editorSave" src="~/img/save.png" style="width: 33px; height: 33px;" />
-    </a>
+    {
+    @Html.HiddenFor(m => m.content, new { @id = "hidden_editor" })
+    @*@<a href='@Url.Action("SaveCode","CodeWrite")'>
+            <img class="editorSave" src="~/img/save.png" style="width: 33px; height: 33px;" />
+        </a>*@
+    <input type="submit" value="Save code" />
 }
 
 <div id="editor">
@@ -18,14 +20,14 @@
 
 @section scripts
 {
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js" type="text/javascript" charset="utf-8"></script>
-@*@Scripts.Render("https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js")*@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js" type="text/javascript" charset="utf-8"></script>
+    @*@Scripts.Render("https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js")*@
 
-@*SignalR connection*@
-<script src="~/Scripts/jquery.signalR-2.2.2.js"></script>
-<script src="~/signalr/hubs"></script>
+    @*SignalR connection*@
+    <script src="~/Scripts/jquery.signalR-2.2.2.js"></script>
+    <script src="~/signalr/hubs"></script>
 
-<script>
+    <script>
 
     var documentID = @ViewBag.documentID;
 
@@ -49,7 +51,7 @@
 
     $.connection.hub.start().done(function () {
 
-        codeHub.server.joinDocument(documentID); // fileId
+        codeHub.server.joinDocument(documentID);
 
         editor.on("change", function (obj) {
             if (silent) {
@@ -60,5 +62,5 @@
         });
     });
 
-</script>
+    </script>
 }
