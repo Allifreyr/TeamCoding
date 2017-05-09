@@ -69,6 +69,7 @@ namespace TeamCode.Services
                             select p).SingleOrDefault();
             file.fileName = "Untitled";
             file.fileType = ".js";
+            file.content = "Vei þetta virkaði! - Hello world og eitthvað þannig..";
             file.user = (from u in _db.Users
                             where u.Id == userId
                             select u).SingleOrDefault();
