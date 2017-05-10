@@ -68,7 +68,7 @@ namespace TeamCode.Controllers
             {
                 string thisFileUserId = null;
                 thisFileUserId = file.user.Id;
-                if (thisFileUserId != Session["userId"].ToString())  //Check if user id for this project is yours
+                if(thisFileUserId != Session["userId"].ToString())  //Check if user id for this project is yours
                 {
                     return View("Error");                            //Project doesn't belong to you
                 }

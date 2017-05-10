@@ -25,6 +25,12 @@ namespace TeamCode.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
+            File file = _db.Files.Find(id);
+            if(file.user.Id != Session["userId"].ToString())
+            {
+                return View("Error");                           //Temp fix until we managed to invite users into project.
+            }
+
             //ViewBag.Code = "alert('Hello world!');";
             //ViewBag.Code = FileService.Instance.GetValueFromContent(id.Value);
             ViewBag.Code = _db.Files.Where(gvc => gvc.id == id).SingleOrDefault().content;
@@ -64,7 +70,7 @@ namespace TeamCode.Controllers
         }
 
         [HttpPost]
-     //   [ValidateAntiForgeryToken]
+        //   [ValidateAntiForgeryToken]
         public ActionResult SaveCode([Bind(Include = "id,fileName,content,fileType,projectid,userid")] FileViewModel file)
         {
             if(ModelState.IsValid)
@@ -88,7 +94,7 @@ namespace TeamCode.Controllers
 
                 return RedirectToAction("Index", "CodeWrite", new { id = file.id });
             }
-            return View("CodeWrite");
+            return View("Error");
         }
     }
 }

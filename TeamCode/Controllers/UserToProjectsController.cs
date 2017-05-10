@@ -139,7 +139,7 @@ namespace TeamCode.Controllers
         [HttpPost]
         public ActionResult addUserToProject(UserToProjectsViewModel model)
         {
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 //TODO: SubscribeUser(model.Email);
             }
