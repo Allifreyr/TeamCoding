@@ -125,7 +125,7 @@ namespace TeamCode.Services
                             select p).SingleOrDefault();
             file.fileName = fileName;
             file.fileType = fileType;
-            file.content = "Vei virkadi - Hello World og eitthvad solleidis :D !!! .... *#&#%$! BLOB";
+            file.content = "Vei virkadi - Hello World og eitthvad solleidis :D !!!";
             file.user = (from u in _db.Users
                          where u.Id == userId
                          select u).SingleOrDefault();

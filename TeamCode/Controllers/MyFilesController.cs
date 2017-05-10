@@ -30,7 +30,14 @@ namespace TeamCode.Controllers
             var p = ProjectService.Instance.GetProjectByID(id.Value);
 
             ViewBag.ProjectName = p.projectName;
-            ViewBag.ProjectOwner = p.user.UserName;
+            try
+            {
+                ViewBag.ProjectOwner = p.user.UserName;
+            }
+            catch
+            {
+                return View("Error");
+            }
 
             ViewBag.ProjectID = id.Value;
 
@@ -96,5 +103,19 @@ namespace TeamCode.Controllers
             }
             return View(file);
         }
+        /*
+        public ActionResult DeleteFile(int? id)
+        {
+            if (ModelState.IsValid)
+            {
+                File file = _db.Files.Find(id);
+                _db.Files.Remove(file);
+                _db.Entry(file).State = EntityState.Modified;
+                _db.SaveChanges();
+                return RedirectToAction("Index", new { id = file.id });
+            }
+            return View("Error");
+        }
+        */
     }
 }

@@ -63,8 +63,6 @@ namespace TeamCode.Controllers
                            select p).SingleOrDefault(),
                 user = null
             };
-            _db.UsersToProjects.Add(up);
-            _db.SaveChanges();
 
             UserToProjectsViewModel upvm = new UserToProjectsViewModel
             {
@@ -87,24 +85,22 @@ namespace TeamCode.Controllers
             {
                 try
                 {
-                    var emailId = _db.Users.Where(bla => bla.Email == userToProject.userId).SingleOrDefault().Id;
+                    var emailId = _db.Users.Where(bla => bla.Email == userToProject.userId).SingleOrDefault();
+                    UserToProjects up = new UserToProjects
+                    {
+                        id = userToProject.ide,
+                        project = (from p in _db.Projects
+                                   where p.id == userToProject.projectId
+                                   select p).SingleOrDefault(),
+                        user = emailId
+                    };
+                    _db.UsersToProjects.Add(up);
+                    _db.SaveChanges();
                 }
                 catch
                 {
                     return View("Error");
                 }
-                
-                UserToProjects up = new UserToProjects
-                {
-                    id = userToProject.ide,
-                    project = (from p in _db.Projects
-                               where p.id == userToProject.projectId
-                               select p).SingleOrDefault(),
-                    user = _db.Users.Where(bla => bla.Email == userToProject.userId).SingleOrDefault()
-            };
-
-                _db.Entry(up).State = EntityState.Modified;
-                _db.SaveChanges();
 
                 return View("Index");
             }

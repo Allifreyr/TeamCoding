@@ -44,6 +44,7 @@ namespace TeamCode.Controllers
             //ViewBag.userID = FileService.Instance.GetFileUserID(id.Value).Id;
             ViewBag.userID = _db.Files.Find(id).user;
 
+
             return View();
         }
 
