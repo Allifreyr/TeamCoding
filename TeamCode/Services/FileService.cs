@@ -22,6 +22,7 @@ namespace TeamCode.Services
                 return instance;
             }
         }
+
         private ApplicationDbContext _db;
 
         public FileService()

@@ -9,7 +9,7 @@ namespace TeamCode.Models.ViewModels
     public class UserToProjectsViewModel
     {
         [Key]
-        public int id { get; set; }
+        public int ide { get; set; }
 
         public string userId { get; set; }
         public int projectId { get; set; }

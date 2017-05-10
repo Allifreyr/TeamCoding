@@ -232,6 +232,7 @@
     <Compile Include="Services\CodeWriteService.cs" />
     <Compile Include="Services\FileService.cs" />
     <Compile Include="Services\ProjectService.cs" />
+    <Compile Include="Services\UserToProjectsService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
