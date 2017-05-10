@@ -1,16 +1,12 @@
-﻿using Microsoft.AspNet.Identity;
-using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using TeamCode.Models;
 using TeamCode.Models.Entities;
 using TeamCode.Models.ViewModels;
-using Microsoft.AspNet.Identity;
+using TeamCode.Services;
 
 namespace TeamCode.Controllers
 {
@@ -20,17 +16,48 @@ namespace TeamCode.Controllers
 
         // GET: UserToProjects
         //public ActionResult Index(string searchString)
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
 
-          /*  var users = from a in db.UsersToProjects
-                        select a;
-            if(!string.IsNullOrEmpty(searchString))
-            {
-                users = users.Where(s => s.user.UserName.Contains(searchString));
-            }*/
+            /*  var users = from a in db.UsersToProjects
+                          select a;
+              if(!string.IsNullOrEmpty(searchString))
+              {
+                  users = users.Where(s => s.user.UserName.Contains(searchString));
+              }*/
             //return View(users);
-            return View();
+
+            //    int projectId = ProjectService.Instance.GetProjectByID(id.Value).id;
+            //   Session["projectId"] = id.Value;
+            /*     var up = _db.UsersToProjects.Where(p => p.project.id == id.Value);
+
+                 UserToProjectsViewModel upvm = new UserToProjectsViewModel
+                 {
+                     ide = up.id,
+                     projectId = up.project.id,
+                     userId = null
+                 };
+                 return View(up);*/
+            //  return View();
+
+            //  var p = ProjectService.Instance.GetProjectByID(id.Value);
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            ViewBag.ProjectName = ProjectService.Instance.GetProjectByID(id.Value).projectName;
+            ViewBag.ProjectOwner = ProjectService.Instance.GetProjectByID(id.Value).user.Email;
+
+            var u = _db.UsersToProjects.Where(up => up.project.id == id).ToList();
+
+            if (u == null)
+            {
+                return View();
+            }
+
+            return View(u);
         }
 
         // GET: UserToProjects/Details/5
@@ -51,6 +78,8 @@ namespace TeamCode.Controllers
         // GET: UserToProjects/Create
         public ActionResult Create(int? id)
         {
+            ViewBag.ProjectName = ProjectService.Instance.GetProjectByID(id.Value);
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
