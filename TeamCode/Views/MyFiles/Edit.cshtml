@@ -64,7 +64,9 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index", "MyProjects")
+    <a href='@Url.Action("Index","MyFiles", new { id =  Model.project.id})'>
+        Back to list!
+    </a>
 </div>
 
 @section Scripts {
