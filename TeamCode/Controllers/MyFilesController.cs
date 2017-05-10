@@ -29,7 +29,7 @@ namespace TeamCode.Controllers
             ViewBag.ProjectOwner = ProjectService.Instance.GetProjectByID(id.Value).user.Email;
             ViewBag.ProjectID = id.Value;
 
-            var f = _db.Files.Where(ta => ta.project.id == id).ToList();
+            var f = FileService.Instance.GetFilesByProject(id);
 
             /*            var p = ProjectService.Instance.GetProjectByID(id.Value);
 
@@ -115,7 +115,7 @@ namespace TeamCode.Controllers
         /*
         public ActionResult DeleteFile(int? id)
         {
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 File file = _db.Files.Find(id);
                 _db.Files.Remove(file);

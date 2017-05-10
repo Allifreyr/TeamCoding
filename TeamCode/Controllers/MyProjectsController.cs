@@ -23,9 +23,9 @@ namespace TeamCode.Controllers
             // var datacontext = new ApplicationDbContext();
             string userId = User.Identity.GetUserId();
             Session["userId"] = userId;
-            var projects = _db.Projects.Where(t => t.user.Id == userId);
+            //var projects = _db.Projects.Where(t => t.user.Id == userId);
+            var projects = ProjectService.Instance.GetProjectsByUser(userId);
             return View(projects);
-
         }
 
         public ActionResult CreateProject()
@@ -78,7 +78,7 @@ namespace TeamCode.Controllers
         /*
         public ActionResult DeleteProject(int? id)
         {
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 Project proj = _db.Projects.Find(id);
                 File file = _db.Files.Where(rf => rf.project.id == proj.id).SingleOrDefault();
