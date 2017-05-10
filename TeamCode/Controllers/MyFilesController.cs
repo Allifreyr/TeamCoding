@@ -87,10 +87,10 @@ namespace TeamCode.Controllers
             }
             if(ModelState.IsValid)
             {
-                //dbFile.content = file.content;
+                dbFile.content = file.content;
                 dbFile.fileName = file.fileName;
-                //dbFile.fileType = file.fileType;
-                _db.Entry(file).State = EntityState.Modified;
+                dbFile.fileType = file.fileType;
+                _db.Entry(dbFile).State = EntityState.Modified;
                 _db.SaveChanges();
                 return RedirectToAction("Index", new { id = dbFile.id });
             }
