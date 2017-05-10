@@ -70,7 +70,6 @@ namespace TeamCode.Controllers
             if(ModelState.IsValid)
             {
                 _db.Entry(proj).State = EntityState.Modified;
-
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }

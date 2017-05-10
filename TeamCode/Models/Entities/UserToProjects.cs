@@ -6,7 +6,7 @@ using System.Web;
 
 namespace TeamCode.Models.Entities
 {
-    public class UserToProject
+    public class UserToProjects
     {
         [Key]
         public int id { get; set; }

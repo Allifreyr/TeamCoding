@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -8,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using TeamCode.Models;
 using TeamCode.Models.Entities;
+using TeamCode.Models.ViewModels;
 
 namespace TeamCode.Controllers
 {
@@ -34,7 +36,7 @@ namespace TeamCode.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserToProject userToProject = db.UsersToProjects.Find(id);
+            UserToProjects userToProject = db.UsersToProjects.Find(id);
             if(userToProject == null)
             {
                 return HttpNotFound();
@@ -53,7 +55,7 @@ namespace TeamCode.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id")] UserToProject userToProject)
+        public ActionResult Create([Bind(Include = "id")] UserToProjects userToProject)
         {
             if(ModelState.IsValid)
             {
@@ -72,7 +74,7 @@ namespace TeamCode.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserToProject userToProject = db.UsersToProjects.Find(id);
+            UserToProjects userToProject = db.UsersToProjects.Find(id);
             if(userToProject == null)
             {
                 return HttpNotFound();
@@ -85,7 +87,7 @@ namespace TeamCode.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id")] UserToProject userToProject)
+        public ActionResult Edit([Bind(Include = "id")] UserToProjects userToProject)
         {
             if(ModelState.IsValid)
             {
@@ -103,7 +105,7 @@ namespace TeamCode.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserToProject userToProject = db.UsersToProjects.Find(id);
+            UserToProjects userToProject = db.UsersToProjects.Find(id);
             if(userToProject == null)
             {
                 return HttpNotFound();
@@ -116,7 +118,7 @@ namespace TeamCode.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            UserToProject userToProject = db.UsersToProjects.Find(id);
+            UserToProjects userToProject = db.UsersToProjects.Find(id);
             db.UsersToProjects.Remove(userToProject);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -129,6 +131,20 @@ namespace TeamCode.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public ActionResult addUserToProject(string userId)
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult addUserToProject(UserToProjectsViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                //TODO: SubscribeUser(model.Email);
+            }
+
+            return View("Index", model);
         }
     }
 }

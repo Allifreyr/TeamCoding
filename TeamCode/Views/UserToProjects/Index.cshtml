@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TeamCode.Models.Entities.UserToProject>
+﻿@model IEnumerable<TeamCode.Models.ViewModels.UserToProjectsViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -7,6 +7,12 @@
 <h2>Index</h2>
 
 <p>
+    @*@using (Html.BeginForm("addUserToProject", "UserToProjects", FormMethod.Post))
+    {
+        @Html.TextBoxFor(model => model.userId)
+        @Html.ValidationMessageFor(model => model.
+        <button type="submit">Subscribe</button>
+    }*@
     @Html.ActionLink("Create New", "Create")
 
     @using (Html.BeginForm())
