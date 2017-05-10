@@ -112,6 +112,9 @@ namespace TeamCode.Controllers
         {
             if(ModelState.IsValid)
             {
+                /*var checkProject = (from p in _db.UsersToProjects
+                                    where p.project.id == userToProject.projectId
+                                    select p)*/
                 try
                 {
                     var emailId = _db.Users.Where(bla => bla.Email == userToProject.userId).SingleOrDefault();
@@ -125,13 +128,15 @@ namespace TeamCode.Controllers
                     };
                     _db.UsersToProjects.Add(up);
                     _db.SaveChanges();
+
+                    return RedirectToAction("Index", new { id = up.project.id });
                 }
                 catch
                 {
                     return View("Error");
                 }
 
-                return View("Index");
+                
             }
 
             return View(userToProject);
