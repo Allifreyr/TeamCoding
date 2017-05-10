@@ -26,12 +26,17 @@ namespace TeamCode.Controllers
             }
 
             //ViewBag.Code = "alert('Hello world!');";
-            ViewBag.Code = FileService.Instance.GetValueFromContent(id.Value);
+            //ViewBag.Code = FileService.Instance.GetValueFromContent(id.Value);
+            ViewBag.Code = _db.Files.Where(gvc => gvc.id == id).SingleOrDefault().content;
             ViewBag.documentID = id.Value;
-            ViewBag.fileType = FileService.Instance.GetFileType(id.Value);
-            ViewBag.fileName = FileService.Instance.GetFileName(id.Value);
+            //ViewBag.fileType = FileService.Instance.GetFileType(id.Value);
+            ViewBag.fileType = _db.Files.Where(gft => gft.id == id).SingleOrDefault().fileType;
+            //ViewBag.fileName = FileService.Instance.GetFileName(id.Value);
+            ViewBag.fileName = _db.Files.Where(gfn => gfn.id == id).SingleOrDefault().fileName;
             ViewBag.projectID = FileService.Instance.GetFileProjectID(id.Value).id;
-            ViewBag.userID = FileService.Instance.GetFileUserID(id.Value).Id;
+            //ViewBag.projectID = _db.Files.Where(gfp => gfp.id == id).SingleOrDefault().project;
+            //ViewBag.userID = FileService.Instance.GetFileUserID(id.Value).Id;
+            ViewBag.userID = _db.Files.Find(id).user;
 
             return View();
         }
