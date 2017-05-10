@@ -184,3 +184,12 @@ footer a {
     right: 1.5%;
     top: 13%;
 }
+
+.editIcon {
+    background-image: url(~/img/editsvg.png);
+    background-repeat: no-repeat;
+}
+
+.editImg {
+    color: red;
+}

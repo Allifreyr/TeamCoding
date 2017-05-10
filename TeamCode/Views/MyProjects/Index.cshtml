@@ -6,43 +6,36 @@
 
 <h2>My Projects</h2>
 
-<a href='@Url.Action("CreateProject","MyProjects")'>
-    <img alt="addProject" src="~/img/addFolder.png" style="width: 66px; height: 66px;" />
-</a>
+<div class="col-sm-6 col-md-3">
+    <div class="thumbnail">
+        <a href='@Url.Action("CreateProject","MyProjects")'>
+            <img alt="addProject" src="~/img/addFolder.png" style="width: 66px; height: 66px;" />
+        </a>
+        <div class="caption">
+            <h3>New Project</h3>
+            <div>
 
-    <table class="table">
+            </div>
+        </div>
+    </div>
+</div>
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    <a href='@Url.Action("Index","MyFiles", new { id = item.id })'>
-                        <img alt="project" src="~/img/folder.png" style="width: 66px; height: 66px;" />
-                    </a>
-                    @*@Html.DisplayFor(modelItem => item.id)*@
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.projectName)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.id })
-                </td>
-                @*<td>
-                    <a href='@Url.Action("Index","MyFiles", new { id = item.id })'>
-                        Share
-                    </a>
-                 </td>*@
-                @*<td>
-                    @Html.DisplayFor(modelItem => item.user.UserName)
-                </td>*@
-                <td>
-                    @*<div class="btn-group btn-group-sm" role="group" aria-label="...">
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-default" })
-                        @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-default" })
-                    </div>*@
-                </td>
-            </tr>
-        }
+@foreach (var item in Model)
+{
+    <div class="projectTable col-sm-6 col-md-3">
+        <div class="thumbnail">
+            <a href='@Url.Action("Index","MyFiles", new { id = item.id })' class="folderImg">
+                <img alt="project" src="~/img/folder.png" style="width: 66px; height: 66px;" />
+            </a>
+            <div class="caption">
+                <h3>@Html.DisplayFor(modelItem => item.projectName)</h3>
+                <div class="editImg">
+                    @Html.ActionLink("Edit", "Edit", null, new { id = item.id }, new { @class = "editIcon" })
+                </div>
+            </div>
+        </div>                
+    </div>
+}
 
-    </table>
+
 
