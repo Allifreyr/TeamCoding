@@ -18,6 +18,7 @@ namespace TeamCode.Controllers
 
 
         // GET: CodeWrite
+        [Authorize]
         public ActionResult Index(int? id)
         {
             if(id == null)
@@ -26,10 +27,22 @@ namespace TeamCode.Controllers
             }
 
             File file = _db.Files.Find(id);
-            if(file.user.Id != Session["userId"].ToString())
+            try
             {
-                return View("Error");                           //Temp fix until we managed to invite users into project.
+                if(file.user.Id != Session["userId"].ToString())
+                {
+                    return RedirectToAction("Index", "MyProjects"); //Redirect to Myproject
+                }
             }
+            catch
+            {
+                if(Request.IsAuthenticated)
+                {
+                    return RedirectToAction("Index", "MyProjects");
+                }
+                return RedirectToAction("Index", "Home");
+            }
+            
 
             //ViewBag.Code = "alert('Hello world!');";
             //ViewBag.Code = FileService.Instance.GetValueFromContent(id.Value);
@@ -49,6 +62,7 @@ namespace TeamCode.Controllers
         }
 
         // GET: CodeWrite/Edit/5
+        [Authorize]
         public ActionResult Edit(int id)
         {
             return View();
