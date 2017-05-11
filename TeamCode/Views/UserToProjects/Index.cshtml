@@ -58,7 +58,8 @@
         <td>
           @* @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
     @Html.ActionLink("Details", "Details", new { id=item.id }) |*@
-            @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            <a href="@Url.Action("Delete", "UserToProjects", new { id = item.id })">
+                    <img alt="DeleteUser" src="~/img/removeUser.png" style="width: 33px; height: 33px;" />
         </td>
     </tr>
 }
