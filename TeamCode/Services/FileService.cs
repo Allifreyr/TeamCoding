@@ -28,7 +28,7 @@ namespace TeamCode.Services
 
         public FileService()
         {
-            //_db = new ApplicationDbContext();
+            _db = new ApplicationDbContext();
         }
 
         internal File AddNewFile()
