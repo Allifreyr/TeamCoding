@@ -20,11 +20,20 @@ namespace TeamCode.Controllers
         [Authorize]
         public ActionResult Index()
         {
+            
+            //Á eftir að testa
             // var datacontext = new ApplicationDbContext();
             string userId = User.Identity.GetUserId();
             Session["userId"] = userId;
             //var projects = _db.Projects.Where(t => t.user.Id == userId);
-            var projects = ProjectService.Instance.GetProjectsByUser(userId);
+            List<Project> projects = ProjectService.Instance.GetProjectsByUser(userId);
+            List<UserToProjects> upShared = UserToProjectsService.Instance.GetProjectsSharedWithUser(userId);
+
+            for (int i = 0; i < upShared.Count; i++)
+            {
+                projects.Add(ProjectService.Instance.GetProjectByID(upShared[i].project.id));
+            }
+
             return View(projects);
         }
 

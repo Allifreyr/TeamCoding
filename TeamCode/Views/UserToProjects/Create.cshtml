@@ -15,7 +15,7 @@
         @Html.HiddenFor(m => m.ide)
         @Html.HiddenFor(m => m.projectId)
     @*    @Html.HiddenFor(m => m.projectId, new { id = ViewContext.RouteData.Values["ID"] })*@
-
+    @Html.ValidationSummary()
     <div class="form-group">
         @Html.LabelFor(m => m.userId, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -31,5 +31,5 @@
     </div>
 }
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index", new { id = ViewContext.RouteData.Values["ID"] })
 </div>

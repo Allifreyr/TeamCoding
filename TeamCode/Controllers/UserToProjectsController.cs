@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -13,6 +14,7 @@ namespace TeamCode.Controllers
     public class UserToProjectsController : Controller
     {
         private ApplicationDbContext _db = new ApplicationDbContext();
+        private object ex;
 
         // GET: UserToProjects
         //public ActionResult Index(string searchString)
@@ -112,9 +114,30 @@ namespace TeamCode.Controllers
         {
             if(ModelState.IsValid)
             {
-                /*var checkProject = (from p in _db.UsersToProjects
-                                    where p.project.id == userToProject.projectId
-                                    select p)*/
+                //Check if user already has access to project
+                var userInTable = (from p in _db.UsersToProjects                        
+                                    where p.user.Email == userToProject.userId
+                                    select p).ToList();
+                var project = ProjectService.Instance.GetProjectByID(userToProject.projectId);
+
+                if(project == null || project.user.Id == userToProject.userId)
+                {
+                    return View("Create");
+                }
+                
+                if(userInTable != null)
+                {
+                    for (int i = 0; i < userInTable.Count; i++)
+                    {
+                        if (userInTable[i].project.id == userToProject.projectId)
+                        {
+                            //Vantar skilaboð hér: "User already has access to project". (Kata)
+                            return View("Create");
+                        }
+
+                    }
+                }
+
                 try
                 {
                     var emailId = _db.Users.Where(bla => bla.Email == userToProject.userId).SingleOrDefault();
@@ -140,6 +163,11 @@ namespace TeamCode.Controllers
             }
 
             return View(userToProject);
+        }
+
+        private ActionResult View(object v, UserToProjectsViewModel userToProject)
+        {
+            throw new NotImplementedException();
         }
 
         // GET: UserToProjects/Edit/5
