@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Index";
 }
+
 <div>
     <a href='@Url.Action("Index","UserToProjects", new { id = ViewContext.RouteData.Values["ID"]})'>
         <img src="~/img/multipleIcon.png" style="width: 66px; height: 66px; float: right; position: relative; top: -20px;" />
@@ -40,12 +41,9 @@
                     <a href="@Url.Action("Edit", "MyFiles", new { id = item.id })">
                         <img alt="project" src="~/img/editsvg.png" style="width: 33px; height: 33px;" />
                     </a>
-                    @Html.AntiForgeryToken()
-                    @Html.ActionLink(
-                             "Delete",
-                             "DeleteFile",
-                             new { id = item.id },
-                             new { onclick = "return confirm('Are you sure you wish to delete this project?');" })
+                    <a href='@Url.Action("DeleteFile", new { id = item.id })' onclick = "return confirm('Are you sure you wish to delete this project?');">
+                        <img src="~/img/Delete.png" style="width: 33px; height: 33px;" />
+                    </a>
                 </div>
             </div>
         </div>

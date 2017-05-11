@@ -96,11 +96,15 @@ namespace TeamCode.Controllers
         public ActionResult Edit(File file)
         {
 
-            File edit = FileService.Instance.PostFileByID(file);   //No idea why this doesn't work. Had to use the code above.
+            File edit = FileService.Instance.PostFileByID(file);
             if(edit != null)
+            {
                 return RedirectToAction("Index", new { id = edit.project.id });
+            }
             else
+            {
                 return View(file);
+            }
         }
 
         public ActionResult DeleteFile(int? id)
