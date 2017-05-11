@@ -84,7 +84,7 @@ namespace TeamCode.Controllers
                 File file = _db.Files.Where(rf => rf.project.id == proj.id).SingleOrDefault();
                 _db.Projects.Remove(proj);
                 _db.Files.Remove(file);
-                _db.Entry(proj).State = EntityState.Modified;
+                _db.Entry(proj).State = EntityState.Removed;
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
