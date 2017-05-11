@@ -131,7 +131,7 @@ namespace TeamCode.Controllers
                     {
                         if (userInTable[i].project.id == userToProject.projectId)
                         {
-                            //Vantar skilaboð hér: "User already has access to project". (Kata)
+                            //If user already exists in project then this error messages appears.
                             ModelState.AddModelError("Email", "Email address already exists for this project. Please enter a different email address.");
                             return View("Create");
                         }

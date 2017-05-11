@@ -20,12 +20,9 @@ namespace TeamCode.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            
-            //Á eftir að testa
-            // var datacontext = new ApplicationDbContext();
             string userId = User.Identity.GetUserId();
             Session["userId"] = userId;
-            //var projects = _db.Projects.Where(t => t.user.Id == userId);
+
             List<Project> projects = ProjectService.Instance.GetProjectsByUser(userId);
             List<UserToProjects> upShared = UserToProjectsService.Instance.GetProjectsSharedWithUser(userId);
 
@@ -52,6 +49,8 @@ namespace TeamCode.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
+            ViewBag.ProjectName = ProjectService.Instance.GetProjectByID(id.Value).projectName;
 
             Project proj = _db.Projects.Find(id);
             if(proj == null)
