@@ -79,10 +79,6 @@ footer a {
     color: #fff;
 }
 
-footar a:hover {
-    color: #999;
-}
-
 /*Form for Login/Register on start screen*/
 .panel-login {
 	border-color: #ccc;

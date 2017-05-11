@@ -255,6 +255,7 @@
     <Content Include="img\multipleIcon.png" />
     <Content Include="img\plusIcon.png" />
     <Content Include="img\profile.png" />
+    <Content Include="img\removeUser.png" />
     <Content Include="img\save.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
