@@ -112,19 +112,20 @@ namespace TeamCode.Controllers
             }
             return View(file);
         }
-        /*
+
         public ActionResult DeleteFile(int? id)
         {
-            if(ModelState.IsValid)
+            var projectId = _db.Files.Find(id).project.id;
+            if (ModelState.IsValid)
             {
                 File file = _db.Files.Find(id);
                 _db.Files.Remove(file);
-                _db.Entry(file).State = EntityState.Modified;
+                _db.Entry(file).State = EntityState.Deleted;
                 _db.SaveChanges();
-                return RedirectToAction("Index", new { id = file.id });
+                return RedirectToAction("Index", "Myfiles", new { id = projectId });
             }
             return View("Error");
         }
-        */
+
     }
 }

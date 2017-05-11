@@ -38,6 +38,13 @@
                 <h3>@shorTitle</h3>
                 <div class="editImg">
                     @Html.Raw(@Html.ActionLink("[replacetext]", "Edit", null, new { id = item.id }, new { @class = "editIcon" }).ToHtmlString().Replace("[replacetext]", "<img alt=\"edit\" src=\"~/img/editsvg.png\" style=\"width: 66px; height 66px; \" />"))
+                    /
+                    @Html.AntiForgeryToken()
+                    @Html.ActionLink(
+                             "Delete",
+                             "DeleteFile",
+                             new { id = item.id },
+                             new { onclick = "return confirm('Are you sure you wish to delete this project?');" })
                 </div>
             </div>
         </div>
