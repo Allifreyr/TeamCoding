@@ -27,7 +27,7 @@ namespace TeamCode.Services
 
         public FileService()
         {
-            _db = new ApplicationDbContext();
+            //_db = new ApplicationDbContext();
         }
 
         internal File AddNewFile()
@@ -88,7 +88,8 @@ namespace TeamCode.Services
 
         public File GetFileByID(int fileID)
         {
-            var fileByID = (from f in _db.Files where f.id == fileID select f).SingleOrDefault();
+            //var fileByID = (from f in _db.Files where f.id == fileID select f).SingleOrDefault();
+            var fileByID = _db.Files.Where(f => f.id == fileID).SingleOrDefault();
 
             return fileByID;
         }
