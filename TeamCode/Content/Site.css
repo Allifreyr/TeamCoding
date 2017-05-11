@@ -185,11 +185,6 @@ footer a {
     top: 13%;
 }
 
-.editIcon {
-    background-image: url(~/img/editsvg.png);
-    background-repeat: no-repeat;
-}
-
 .editImg button {
     border: none;
     background: url(~/img/editsvg.png);
@@ -206,4 +201,8 @@ footer a {
 
 TCLogo {
     margin-top: -100px;
+}
+
+.itemInTable {
+    display: flex;
 }
