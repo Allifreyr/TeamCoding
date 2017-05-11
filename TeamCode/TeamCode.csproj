@@ -213,6 +213,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\imageactionlink.cs" />
     <Compile Include="Hubs\CodeHub.cs" />
     <Compile Include="Migrations\201705082159555_InitialCreate.cs" />
     <Compile Include="Migrations\201705082159555_InitialCreate.Designer.cs">
