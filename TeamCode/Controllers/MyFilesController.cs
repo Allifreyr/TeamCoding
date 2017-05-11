@@ -74,7 +74,7 @@ namespace TeamCode.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            File file = FileService.Instance.GetFileByID(id.Value); 
+            File file = FileService.Instance.GetFileByID(id.Value);
             if(file == null)
             {
                 return HttpNotFound();
@@ -95,28 +95,18 @@ namespace TeamCode.Controllers
         [HttpPost]
         public ActionResult Edit(File file)
         {
-            File dbFile = _db.Files.Where(x => x.id == file.id).SingleOrDefault();
-            //File dbFile = FileService.Instance.GetFileByID(file.id);   //No idea why this doesn't work. Had to use the code above.
-            if(dbFile == null)
-            {
-                return View("Error");
-            }
-            if(ModelState.IsValid)
-            {
-                dbFile.content = file.content;
-                dbFile.fileName = file.fileName;
-                dbFile.fileType = file.fileType;
-                _db.Entry(dbFile).State = EntityState.Modified;
-                _db.SaveChanges();
-                return RedirectToAction("Index", new { id = dbFile.project.id });
-            }
-            return View(file);
+
+            File edit = FileService.Instance.PostFileByID(file);   //No idea why this doesn't work. Had to use the code above.
+            if(edit != null)
+                return RedirectToAction("Index", new { id = edit.project.id });
+            else
+                return View(file);
         }
 
         public ActionResult DeleteFile(int? id)
         {
             var projectId = _db.Files.Find(id).project.id;
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 File file = _db.Files.Find(id);
                 _db.Files.Remove(file);

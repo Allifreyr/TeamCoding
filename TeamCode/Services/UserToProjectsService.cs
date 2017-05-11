@@ -15,7 +15,7 @@ namespace TeamCode.Services
         {
             get
             {
-                if (instance == null)
+                if(instance == null)
                     instance = new UserToProjectsService();
                 return instance;
             }
