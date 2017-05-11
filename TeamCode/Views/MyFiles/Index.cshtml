@@ -12,7 +12,7 @@
     
 
     <div class="col-sm-6 col-md-3">
-        <div class="thumbnail">
+        <div class="thumbnail" style="width: 250px; margin-top: 20px;">
             <a href='@Url.Action("CreateFile","MyFiles", new { id = ViewContext.RouteData.Values["ID"]})'>
                 <img src="~/img/addFile.jpg" style="width: 66px; height: 66px;" />
             </a>
@@ -30,14 +30,14 @@
 {
     string shorTitle = (item.fileName.Length + 3) > 17 ? item.fileName.Substring(0, 17) + ".." : item.fileName + ".js";
     <div class="fileTable col-sm-6 col-md-3">
-        <div class="thumbnail">
+        <div class="thumbnail" style="width: 250px; margin-top: 20px;">
             <a href='@Url.Action("Index","CodeWrite", new { id = item.id })' class="fileImg">
                 <img alt="file" src="~/img/file.png" style="width: 66px; height: 66px;" />
             </a>
             <div class="caption">
                 <h3>@shorTitle</h3>
                 <div class="editImg">
-                    @Html.ActionLink("Edit", "Edit", null, new { id = item.id }, new { @class = "editIcon" })
+                    @Html.Raw(@Html.ActionLink("[replacetext]", "Edit", null, new { id = item.id }, new { @class = "editIcon" }).ToHtmlString().Replace("[replacetext]", "<img alt=\"edit\" src=\"~/img/editsvg.png\" style=\"width: 66px; height 66px; \" />"))
                 </div>
             </div>
         </div>

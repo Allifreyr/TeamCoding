@@ -8,7 +8,7 @@
 
 <div>
     <div class="col-sm-6 col-md-3">
-        <div class="thumbnail">
+        <div class="thumbnail" style="width: 250px; margin-top: 20px;">
             <a href='@Url.Action("CreateProject","MyProjects")'>
                 <img alt="addProject" src="~/img/addFolder.png" style="width: 66px; height: 66px;" />
             </a>
@@ -23,9 +23,9 @@
 
     @foreach (var item in Model)
     {
-        string shorTitle = item.projectName.Length > 20 ? item.projectName.Substring(0, 20) + ".." : item.projectName;
+        string shorTitle = item.projectName.Length > 12 ? item.projectName.Substring(0, 12) + ".." : item.projectName;
         <div class="projectTable col-sm-6 col-md-3">
-            <div class="thumbnail">
+            <div class="thumbnail" style="width: 250px; margin-top: 20px;">
                 <a href='@Url.Action("Index","MyFiles", new { id = item.id })' class="folderImg">
                     <img alt="project" src="~/img/folder.png" style="width: 66px; height: 66px;" />
                 </a>
