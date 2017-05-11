@@ -79,8 +79,9 @@ footer a {
     color: #fff;
 }
 
-footar a:hover {
+footer a:hover {
     color: #999;
+    text-decoration: none;
 }
 
 /*Form for Login/Register on start screen*/
@@ -210,4 +211,8 @@ TCLogo {
 
 .itemInTable {
     display: flex;
+}
+
+.thumbnail:hover {
+    color: midnightblue;
 }
