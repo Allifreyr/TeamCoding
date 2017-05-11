@@ -99,7 +99,7 @@ namespace TeamCode.Controllers
                 }
                 catch
                 {
-                    ViewBag.Message = "You cannot delete a project with files in them. Delete them first";
+                    ViewBag.Message = "You cannot delete a project with users or files attached to them.";
                     return View("Index");
                 }
             }

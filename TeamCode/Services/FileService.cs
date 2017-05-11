@@ -99,7 +99,16 @@ namespace TeamCode.Services
         {
             //var fileByID = (from f in _db.Files where f.id == fileID select f).SingleOrDefault();
             File dbFile = _db.Files.Where(f => f.id == file.id).SingleOrDefault();
-            if(dbFile.id == file.id)
+            List<File> allFiles = _db.Files.Where(f => f.project.id == dbFile.project.id).ToList();
+            for (var i = 0; i < allFiles.Count(); i++)
+            {
+                if (allFiles[i].fileName == file.fileName && allFiles[i].fileType == file.fileType)
+                {
+                    //Vantar skilabod her, "Filename already taken in project."
+                    return null;
+                }
+            }
+            if (dbFile.id == file.id)
             {
                 dbFile.content = file.content;
                 dbFile.fileName = file.fileName;

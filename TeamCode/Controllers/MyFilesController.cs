@@ -62,6 +62,8 @@ namespace TeamCode.Controllers
 
             int projectId = id.Value;
             string userId = User.Identity.GetUserId();
+
+            //Tékka á nöfnum
             FileService.Instance.AddNewFile(userId, projectId);
             return RedirectToAction("Index", "Myfiles", new { id = projectId });
 
@@ -95,15 +97,16 @@ namespace TeamCode.Controllers
         [HttpPost]
         public ActionResult Edit(File file)
         {
-
+            Project proj = FileService.Instance.GetFileProjectID(file.id);
             File edit = FileService.Instance.PostFileByID(file);
+
             if(edit != null)
             {
                 return RedirectToAction("Index", new { id = edit.project.id });
             }
             else
             {
-                return View(file);
+                return RedirectToAction("Index", "Myfiles", new { id = proj.id });
             }
         }
 

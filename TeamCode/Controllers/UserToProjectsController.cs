@@ -208,13 +208,32 @@ namespace TeamCode.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserToProjects userToProject = _db.UsersToProjects.Find(id);
-            if(userToProject == null)
+            var projectId = _db.UsersToProjects.Find(id).project.id;
+            var userToProjectId = _db.UsersToProjects.Find(id).id;
+            if (ModelState.IsValid)
             {
-                return HttpNotFound();
+                UserToProjects up = _db.UsersToProjects.Find(id);
+                _db.UsersToProjects.Remove(up);
+                _db.Entry(up).State = EntityState.Deleted;
+                _db.SaveChanges();
+                return RedirectToAction("Index", "UserToProjects", new { id = projectId });
             }
-            return View(userToProject);
+            return View("Error");
         }
+
+        /*public ActionResult DeleteFile(int? id)
+        {
+            var projectId = _db.Files.Find(id).project.id;
+            if (ModelState.IsValid)
+            {
+                File file = _db.Files.Find(id);
+                _db.Files.Remove(file);
+                _db.Entry(file).State = EntityState.Deleted;
+                _db.SaveChanges();
+                return RedirectToAction("Index", "Myfiles", new { id = projectId });
+            }
+            return View("Error");
+        }*/
 
         // POST: UserToProjects/Delete/5
         [HttpPost, ActionName("Delete")]
