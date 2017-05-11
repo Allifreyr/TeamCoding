@@ -23,7 +23,7 @@ namespace TeamCode.Controllers
 
         public ActionResult Support()
         {
-            ViewBag.Message = "Your support page.";
+            ViewBag.Message = "Here you can view frequently asked questions";
 
             return View();
         }
