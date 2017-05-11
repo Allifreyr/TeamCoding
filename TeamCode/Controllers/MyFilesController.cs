@@ -25,21 +25,29 @@ namespace TeamCode.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var f = _db.Files.Where(ta => ta.project.id == id).ToList();
-
-            var p = ProjectService.Instance.GetProjectByID(id.Value);
-
-            ViewBag.ProjectName = p.projectName;
-            try
-            {
-                ViewBag.ProjectOwner = p.user.UserName;
-            }
-            catch
-            {
-                return View("Error");
-            }
-
+            ViewBag.ProjectName = ProjectService.Instance.GetProjectByID(id.Value).projectName;
+            ViewBag.ProjectOwner = ProjectService.Instance.GetProjectByID(id.Value).user.Email;
             ViewBag.ProjectID = id.Value;
+
+            var f = FileService.Instance.GetFilesByProject(id);
+
+            /*            var p = ProjectService.Instance.GetProjectByID(id.Value);
+
+                        ViewBag.ProjectName = p.projectName;
+                        try
+                        {
+                            ViewBag.ProjectOwner = p.user.UserName;
+                        }
+                        catch
+                        {
+                            return View("Error");
+                        }
+
+                        ViewBag.ProjectID = id.Value;*/
+            if(f == null)
+            {
+                return View();
+            }
 
             return View(f);
         }
@@ -99,14 +107,15 @@ namespace TeamCode.Controllers
                 dbFile.fileType = file.fileType;
                 _db.Entry(dbFile).State = EntityState.Modified;
                 _db.SaveChanges();
-                return RedirectToAction("Index", new { id = dbFile.id });
+                //  return RedirectToAction("Index", new { id = dbFile.id });
+                return RedirectToAction("Index", new { id = dbFile.project.id });
             }
             return View(file);
         }
         /*
         public ActionResult DeleteFile(int? id)
         {
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 File file = _db.Files.Find(id);
                 _db.Files.Remove(file);

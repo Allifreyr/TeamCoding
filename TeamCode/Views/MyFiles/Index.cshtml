@@ -3,54 +3,45 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>@ViewBag.ProjectName</h2>
-<p>Owner: @ViewBag.ProjectOwner</p>
-
-<p>Project's files</p>
-
+<div>
     <a href='@Url.Action("Index","UserToProjects", new { id = ViewContext.RouteData.Values["ID"]})'>
-        <img src="~/img/iconCog.png" style="width: 66px; height: 66px;" />
+        <img src="~/img/iconCog.png" style="width: 66px; height: 66px; float: right; position: relative; top: 0px;" />
     </a>
+    <h2>@ViewBag.ProjectName</h2>
+    <p>Owner: @ViewBag.ProjectOwner</p>
+    
 
-    <a href='@Url.Action("CreateFile","MyFiles", new { id = ViewContext.RouteData.Values["ID"]})'>
-        <img src="~/img/addFile.jpg" style="width: 66px; height: 66px;" />
-    </a>
+    <div class="col-sm-6 col-md-3">
+        <div class="thumbnail" style="width: 250px; margin-top: 20px;">
+            <a href='@Url.Action("CreateFile","MyFiles", new { id = ViewContext.RouteData.Values["ID"]})'>
+                <img src="~/img/addFile.jpg" style="width: 66px; height: 66px;" />
+            </a>
+            <div class="caption">
+                <h3>New File</h3>
+                <div>
 
-<table class="table">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                <a href='@Url.Action("Index","CodeWrite", new { id = item.id })'>
-                    <img alt="file" src="~/img/file.png" style="width: 66px; height: 66px;" />
-                </a>
-                @*@Html.DisplayFor(modelItem => item.id)*@
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.fileName)@Html.DisplayFor(modelItem => item.fileType)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.id })
-                @*/
+@foreach (var item in Model)
+{
+    string shorTitle = (item.fileName.Length + 3) > 17 ? item.fileName.Substring(0, 17) + ".." : item.fileName + ".js";
+    <div class="fileTable col-sm-6 col-md-3">
+        <div class="thumbnail" style="width: 250px; margin-top: 20px;">
+            <a href='@Url.Action("Index","CodeWrite", new { id = item.id })' class="fileImg">
+                <img alt="file" src="~/img/file.png" style="width: 66px; height: 66px;" />
+            </a>
+            <div class="caption">
+                <h3>@shorTitle</h3>
+                <div class="editImg">
+                    @Html.Raw(@Html.ActionLink("[replacetext]", "Edit", null, new { id = item.id }, new { @class = "editIcon" }).ToHtmlString().Replace("[replacetext]", "<img alt=\"edit\" src=\"~/img/editsvg.png\" style=\"width: 66px; height 66px; \" />"))
+                </div>
+            </div>
+        </div>
+    </div>
+}
 
-                @Html.AntiForgeryToken()
-                @Html.ActionLink(
-                            "Delete",
-                            "DeleteFile",
-                            new { id = item.id },
-                            new { onclick = "return confirm('Are you sure you wish to delete this project?');" })
-                *@
-            </td>
-            <td>
-                @*<div class="btn-group btn-group-sm" role="group" aria-label="...">
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-default" })
-                        @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-default" })
-                    </div>*@
-            </td>
-        </tr>
-    }
-
-</table>
 

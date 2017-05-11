@@ -37,7 +37,8 @@ namespace TeamCode.Services
 
         public List<File> GetFilesByProject(int? projectID)
         {
-            var filesByProject = (from f in _db.Files where f.project.id == projectID select f).ToList();
+            _db = new ApplicationDbContext();
+            var filesByProject = _db.Files.Where(f => f.project.id == projectID).ToList();
 
             return filesByProject;
         }
@@ -59,8 +60,8 @@ namespace TeamCode.Services
         internal dynamic GetFileUserID(int? fileID)
         {
             File fileByID = _db.Files.Find(fileID);
-                
-                //(from f in _db.Files where f.id == fileID select f).SingleOrDefault();
+
+            //(from f in _db.Files where f.id == fileID select f).SingleOrDefault();
 
             return fileByID.user;
         }
@@ -111,8 +112,8 @@ namespace TeamCode.Services
             file.fileType = ".js";
             file.content = "Vei þetta virkaði! - Hello world og eitthvað þannig..";
             file.user = (from u in _db.Users
-                            where u.Id == userId
-                            select u).SingleOrDefault();
+                         where u.Id == userId
+                         select u).SingleOrDefault();
             _db.Files.Add(file);
             _db.SaveChanges();
         }

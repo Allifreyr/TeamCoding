@@ -245,6 +245,7 @@
     <Content Include="img\addFile.jpg" />
     <Content Include="img\addFolder.png" />
     <Content Include="img\bakgrunns.png" />
+    <Content Include="img\editsvg.png" />
     <Content Include="img\file.png" />
     <Content Include="img\folder.png" />
     <Content Include="img\iconCog.png" />

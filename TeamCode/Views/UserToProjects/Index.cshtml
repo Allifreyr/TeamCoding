@@ -1,10 +1,12 @@
-﻿@model TeamCode.Models.ViewModels.UserToProjectsViewModel
+﻿@model IEnumerable<TeamCode.Models.Entities.UserToProjects>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<!--<h2>User access to Project</h2>-->
+<h2>@ViewBag.ProjectName</h2>
+<p>Owner: @ViewBag.ProjectOwner</p>
 
 <p>
     @*@using (Html.BeginForm("addUserToProject", "UserToProjects", FormMethod.Post))
@@ -36,13 +38,13 @@
     @Html.ActionLink("Add new member to Project", "Create", new { id = ViewContext.RouteData.Values["ID"] })
 
  @*   @using (Html.BeginForm())
-    {
-        <p>
-            Username: @Html.TextBox("SearchString")<br/>
-            <input type="submit"value="Search"/>
-        </p>
-    }
-</p>
+        {
+            <p>
+                Username: @Html.TextBox("SearchString")<br/>
+                <input type="submit"value="Search"/>
+            </p>
+        }
+    </p>*@
 <table class="table">
     <tr>
         <th></th>
@@ -51,14 +53,17 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.DisplayFor(modelItem => item.user.Email)
+        </td>
+        <td>
+          @* @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
             @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            @Html.ActionLink("Delete", "Delete", new { id = item.id })*@
         </td>
     </tr>
 }
 
-</table>*@
+</table>
 
 <script>
     $(function () {

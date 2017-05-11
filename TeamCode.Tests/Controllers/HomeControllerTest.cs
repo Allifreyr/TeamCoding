@@ -38,7 +38,7 @@ namespace TeamCode.Tests.Controllers
             Assert.AreEqual("Your application description page.", result.ViewBag.Message);
         }
 
-        [TestMethod]
+ /*       [TestMethod]
         public void Contact()
         {
             // Arrange
@@ -49,6 +49,6 @@ namespace TeamCode.Tests.Controllers
 
             // Assert
             Assert.IsNotNull(result);
-        }
+        }*/
     }
 }
