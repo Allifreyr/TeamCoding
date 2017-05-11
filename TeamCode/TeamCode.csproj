@@ -213,6 +213,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\imageactionlink.cs" />
     <Compile Include="Hubs\CodeHub.cs" />
     <Compile Include="Migrations\201705082159555_InitialCreate.cs" />
     <Compile Include="Migrations\201705082159555_InitialCreate.Designer.cs">
@@ -245,11 +246,13 @@
     <Content Include="img\addFile.jpg" />
     <Content Include="img\addFolder.png" />
     <Content Include="img\bakgrunns.png" />
+    <Content Include="img\Delete.png" />
     <Content Include="img\editsvg.png" />
     <Content Include="img\file.png" />
     <Content Include="img\folder.png" />
     <Content Include="img\iconCog.png" />
     <Content Include="img\logo.png" />
+    <Content Include="img\multipleIcon.png" />
     <Content Include="img\plusIcon.png" />
     <Content Include="img\profile.png" />
     <Content Include="img\save.png" />

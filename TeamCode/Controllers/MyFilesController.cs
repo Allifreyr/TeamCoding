@@ -95,36 +95,31 @@ namespace TeamCode.Controllers
         [HttpPost]
         public ActionResult Edit(File file)
         {
-            File dbFile = _db.Files.Where(x => x.id == file.id).SingleOrDefault();
-            if(dbFile == null)
+
+            File edit = FileService.Instance.PostFileByID(file);
+            if(edit != null)
             {
-                return View("Error");
+                return RedirectToAction("Index", new { id = edit.project.id });
             }
-            if(ModelState.IsValid)
+            else
             {
-                dbFile.content = file.content;
-                dbFile.fileName = file.fileName;
-                dbFile.fileType = file.fileType;
-                _db.Entry(dbFile).State = EntityState.Modified;
-                _db.SaveChanges();
-                //  return RedirectToAction("Index", new { id = dbFile.id });
-                return RedirectToAction("Index", new { id = dbFile.project.id });
+                return View(file);
             }
-            return View(file);
         }
-        /*
+
         public ActionResult DeleteFile(int? id)
         {
+            var projectId = _db.Files.Find(id).project.id;
             if(ModelState.IsValid)
             {
                 File file = _db.Files.Find(id);
                 _db.Files.Remove(file);
-                _db.Entry(file).State = EntityState.Modified;
+                _db.Entry(file).State = EntityState.Deleted;
                 _db.SaveChanges();
-                return RedirectToAction("Index", new { id = file.id });
+                return RedirectToAction("Index", "Myfiles", new { id = projectId });
             }
             return View("Error");
         }
-        */
+
     }
 }

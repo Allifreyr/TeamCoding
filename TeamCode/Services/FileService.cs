@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -27,7 +28,7 @@ namespace TeamCode.Services
 
         public FileService()
         {
-            _db = new ApplicationDbContext();
+            //_db = new ApplicationDbContext();
         }
 
         internal File AddNewFile()
@@ -88,9 +89,27 @@ namespace TeamCode.Services
 
         public File GetFileByID(int fileID)
         {
-            var fileByID = (from f in _db.Files where f.id == fileID select f).SingleOrDefault();
+            //var fileByID = (from f in _db.Files where f.id == fileID select f).SingleOrDefault();
+            var fileByID = _db.Files.Where(f => f.id == fileID).SingleOrDefault();
 
             return fileByID;
+        }
+
+        public File PostFileByID(File file)
+        {
+            //var fileByID = (from f in _db.Files where f.id == fileID select f).SingleOrDefault();
+            File dbFile = _db.Files.Where(f => f.id == file.id).SingleOrDefault();
+            if(dbFile.id == file.id)
+            {
+                dbFile.content = file.content;
+                dbFile.fileName = file.fileName;
+                dbFile.fileType = file.fileType;
+                _db.Entry(dbFile).State = EntityState.Modified;
+                _db.SaveChanges();
+                return dbFile;
+            }
+
+            return null;
         }
 
         public void SetValueToContent(int? fileID, string content)

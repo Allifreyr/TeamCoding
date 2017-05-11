@@ -25,7 +25,7 @@ textarea {
 }
 
 h1 {
-    font-size: 80px;
+    font-size: 35px;
     display: inline;
     vertical-align: central;
 }
@@ -41,6 +41,7 @@ h1 {
 
 .navbar-inverse {
   border-color: transparent;
+  height: 60px;
 }
 
 .layoutLogo {
@@ -52,14 +53,14 @@ h1 {
 footer {
     border-top-style: solid;
     border-width: 1px;
-    
+    padding-top: 8px;
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
     height: 85px;   /* Height of the footer */ 
 
-    background-color: #000;
+    background-color: #404040;
     color: #fff;
     font-size: 12px;
 } 
@@ -76,6 +77,10 @@ footer a {
     font-weight: bold;
     font-size: 24px;
     color: #fff;
+}
+
+footar a:hover {
+    color: #999;
 }
 
 /*Form for Login/Register on start screen*/
@@ -102,7 +107,7 @@ footer a {
 	transition: all 0.1s linear;
 }
 .panel-login>.panel-heading a.active{
-	color: #029f5b;
+	color: #428bca;
 	font-size: 18px;
 }
 .panel-login>.panel-heading hr{
@@ -150,7 +155,7 @@ footer a {
 }
 
 .btn-register {
-	background-color: #1CB94E;
+	background-color: #59B2E0;
 	outline: none;
 	color: #fff;
 	font-size: 14px;
@@ -158,13 +163,13 @@ footer a {
 	font-weight: normal;
 	padding: 14px 0;
 	text-transform: uppercase;
-	border-color: #1CB94A;
+	border-color: #59B2E6;
 }
 .btn-register:hover,
 .btn-register:focus {
 	color: #fff;
-	background-color: #1CA347;
-	border-color: #1CA347;
+	background-color: #53A3CD;
+	border-color: #53A3CD;
 }
 
 #editor { 
@@ -185,11 +190,24 @@ footer a {
     top: 13%;
 }
 
-.editIcon {
-    background-image: url(~/img/editsvg.png);
-    background-repeat: no-repeat;
+.editImg button {
+    border: none;
+    background: url(~/img/editsvg.png);
+    width: 66px;
+    height: 66px;
 }
 
-.editImg {
-    color: red;
+.TeamCode {
+    text-align:center;
+    font-weight:bold;
+    font-size: 24px;
+    color: #404040;
+}
+
+TCLogo {
+    margin-top: -100px;
+}
+
+.itemInTable {
+    display: flex;
 }

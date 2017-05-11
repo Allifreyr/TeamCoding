@@ -3,42 +3,46 @@
 @{
     ViewBag.Title = "Index";
 }
+
 <div>
     <a href='@Url.Action("Index","UserToProjects", new { id = ViewContext.RouteData.Values["ID"]})'>
-        <img src="~/img/iconCog.png" style="width: 66px; height: 66px; float: right; position: relative; top: 0px;" />
+        <img src="~/img/multipleIcon.png" style="width: 66px; height: 66px; float: right; position: relative; top: -20px;" />
     </a>
     <h2>@ViewBag.ProjectName</h2>
     <p>Owner: @ViewBag.ProjectOwner</p>
+</div>
     
 
-    <div class="col-sm-6 col-md-3">
-        <div class="thumbnail">
-            <a href='@Url.Action("CreateFile","MyFiles", new { id = ViewContext.RouteData.Values["ID"]})'>
-                <img src="~/img/addFile.jpg" style="width: 66px; height: 66px;" />
-            </a>
-            <div class="caption">
-                <h3>New File</h3>
-                <div>
-
-                </div>
-            </div>
+<div class="col-sm-6 col-md-3">
+    <div class="thumbnail" style="width: 250px; height: 150px; margin-top: 20px;">
+        <a href='@Url.Action("CreateFile","MyFiles", new { id = ViewContext.RouteData.Values["ID"]})'>
+            <img src="~/img/addFile.jpg" style="width: 66px; height: 66px; margin: 10px 0px 0px 15px;" />
+        </a>
+        <div class="caption">
+            <h3>New File</h3>
         </div>
     </div>
 </div>
 
+
 @foreach (var item in Model)
 {
-    string shorTitle = (item.fileName.Length + 3) > 17 ? item.fileName.Substring(0, 17) + ".." : item.fileName + ".js";
+    string shortTitle = (item.fileName.Length + 3) > 12 ? item.fileName.Substring(0, 12) + ".." : item.fileName + ".js";
     <div class="fileTable col-sm-6 col-md-3">
-        <div class="thumbnail">
+        <div class="thumbnail" style="width: 250px; height: 150px; margin-top: 20px;">
+            <div class="editDeleteFile">
+                <a href='@Url.Action("DeleteFile", new { id = item.id })' onclick="return confirm('Are you sure you wish to delete this project?');">
+                    <img src="~/img/Delete.png" style="width: 22px; height: 22px; float: right; position: relative; margin-top: 4px;" />
+                </a>
+                <a href="@Url.Action("Edit", "MyFiles", new { id = item.id })">
+                    <img alt="project" src="~/img/editsvg.png" style="width: 33px; height: 33px; float: right; position: relative;" />
+                </a>
+            </div>
             <a href='@Url.Action("Index","CodeWrite", new { id = item.id })' class="fileImg">
-                <img alt="file" src="~/img/file.png" style="width: 66px; height: 66px;" />
+                <img alt="file" src="~/img/file.png" style="width: 66px; height: 66px; margin: 10px 0px 0px 15px;" />
             </a>
             <div class="caption">
-                <h3>@shorTitle</h3>
-                <div class="editImg">
-                    @Html.ActionLink("Edit", "Edit", null, new { id = item.id }, new { @class = "editIcon" })
-                </div>
+                <h3>@shortTitle</h3>
             </div>
         </div>
     </div>

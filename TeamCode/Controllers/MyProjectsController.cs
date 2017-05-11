@@ -84,21 +84,26 @@ namespace TeamCode.Controllers
             }
             return View(proj);
         }
-        /*
+
         public ActionResult DeleteProject(int? id)
         {
             if(ModelState.IsValid)
             {
-                Project proj = _db.Projects.Find(id);
-                File file = _db.Files.Where(rf => rf.project.id == proj.id).SingleOrDefault();
-                _db.Projects.Remove(proj);
-                _db.Files.Remove(file);
-                _db.Entry(proj).State = EntityState.Modified;
-                _db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    Project proj = _db.Projects.Find(id);
+                    _db.Projects.Remove(proj);
+                    _db.Entry(proj).State = EntityState.Deleted;
+                    _db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch
+                {
+                    ViewBag.Message = "You cannot delete a project with files in them. Delete them first";
+                    return View("Index");
+                }
             }
             return View("Error");
         }
-        */
     }
 }

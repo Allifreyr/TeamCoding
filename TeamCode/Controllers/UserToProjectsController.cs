@@ -44,7 +44,7 @@ namespace TeamCode.Controllers
 
             //  var p = ProjectService.Instance.GetProjectByID(id.Value);
 
-            if (id == null)
+            if(id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -54,7 +54,7 @@ namespace TeamCode.Controllers
 
             var u = _db.UsersToProjects.Where(up => up.project.id == id).ToList();
 
-            if (u == null)
+            if(u == null)
             {
                 return View();
             }
@@ -82,7 +82,7 @@ namespace TeamCode.Controllers
         {
             ViewBag.ProjectName = ProjectService.Instance.GetProjectByID(id.Value);
 
-            if (id == null)
+            if(id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
