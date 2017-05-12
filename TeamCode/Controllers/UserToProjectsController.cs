@@ -52,14 +52,14 @@ namespace TeamCode.Controllers
             ViewBag.ProjectName = ProjectService.Instance.GetProjectByID(id.Value).projectName;
             ViewBag.ProjectOwner = ProjectService.Instance.GetProjectByID(id.Value).user.Email;
 
-            var u = _db.UsersToProjects.Where(up => up.project.id == id).ToList();
+            var utpIndex = UserToProjectsService.Instance.GetProjectById(id);
 
-            if(u == null)
+            if(utpIndex == null)
             {
                 return View();
             }
 
-            return View(u);
+            return View(utpIndex);
         }
 
         // GET: UserToProjects/Details/5
