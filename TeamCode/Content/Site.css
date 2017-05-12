@@ -54,7 +54,6 @@ footer {
     bottom: 0;
     width: 100%;
     height: 70px;   /* Height of the footer */ 
-
     background-color: #404040;
     color: #fff;
     font-size: 12px;
@@ -68,7 +67,6 @@ footer a {
     position: absolute;
     right: 100px;
     bottom: 20px;
-
     font-weight: bold;
     font-size: 24px;
     color: #fff;
@@ -102,7 +100,7 @@ footer > a:hover {
 	transition: all 0.1s linear;
 }
 .panel-login>.panel-heading a.active{
-	color: ##b266b2;
+	color: #b266b2;
 	font-size: 18px;
 }
 .panel-login>.panel-heading hr{
@@ -145,8 +143,8 @@ footer > a:hover {
 .btn-login:hover,
 .btn-login:focus {
 	color: #fff;
-	background-color: ##b266b2;
-	border-color: ##b266b2;
+	background-color: #b266b2;
+	border-color: #b266b2;
 }
 
 .btn-register {
@@ -324,7 +322,6 @@ footer > a:hover {
      width: 33px;
 }
 
-<<<<<<< HEAD
 a {
     color: #000;
 }
@@ -337,12 +334,12 @@ a:hover {
 h1:hover {
     color: #b266b2;
     text-decoration: none;
-=======
+}
+
 .editProjectName {
     width: auto;
 }
 
 .email-label {
     width: auto;
->>>>>>> 55e6d4168afdda602347dfb664eba5b9859ea685
 }
