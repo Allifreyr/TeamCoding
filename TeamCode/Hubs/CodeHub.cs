@@ -16,7 +16,6 @@ namespace TeamCode.Hubs
         public void OnChange(object changeData, int documentID)
         {
             Clients.Group(Convert.ToString(documentID), Context.ConnectionId).onChange(changeData);
-            //Clients.All.OnChange(changeData);
         }
     }
 }

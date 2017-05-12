@@ -6,13 +6,11 @@
 
 <h2>Add user to Project</h2>
 
-@* @using (Html.BeginForm())*@
 @using (Html.BeginForm("Create", "UserToProjects", FormMethod.Post))
         {
         @Html.AntiForgeryToken()
         @Html.HiddenFor(m => m.ide)
         @Html.HiddenFor(m => m.projectId)
-    @*    @Html.HiddenFor(m => m.projectId, new { id = ViewContext.RouteData.Values["ID"] })*@
     
     <div class="form-group">
         @Html.LabelFor(m => m.userId, htmlAttributes: new { @class = "email-label control-label col-md-2" })
