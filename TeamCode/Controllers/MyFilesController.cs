@@ -43,7 +43,6 @@ namespace TeamCode.Controllers
         {
             if(id == null)
             {
-
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
@@ -100,17 +99,12 @@ namespace TeamCode.Controllers
 
         public ActionResult DeleteFile(int? id)
         {
-            var projectId = _db.Files.Find(id).project.id;
             if(ModelState.IsValid)
             {
-                File file = _db.Files.Find(id);
-                _db.Files.Remove(file);
-                _db.Entry(file).State = EntityState.Deleted;
-                _db.SaveChanges();
-                return RedirectToAction("Index", "Myfiles", new { id = projectId });
+                int returnId = FileService.Instance.DeleteFile(id);
+                return RedirectToAction("Index", "Myfiles", new { id = returnId });
             }
             return View("Error");
         }
-
     }
 }
