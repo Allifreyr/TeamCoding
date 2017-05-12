@@ -44,6 +44,12 @@ namespace TeamCode.Services
 
             return projectsShared;
         }
+
+        public List<UserToProjects> GetProjectById(int? fileID)
+        {
+            var utp = _db.UsersToProjects.Where(up => up.project.id == fileID).ToList();
+            return utp;
+        }
     }
 
 

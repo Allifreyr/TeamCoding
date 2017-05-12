@@ -36,7 +36,7 @@ h1 {
 }
 
 .navbar-nav > li > a:hover, .navbar-nav > li > a:focus {
-    color: #404040;
+    color: #b266b2;
 }
 
 .layoutLogo {
@@ -75,7 +75,7 @@ footer a {
 }
 
 footer > a:hover {
-    color: #999;
+    color: #b266b2;
     text-decoration: none;
 }
 /*Form for Login/Register on start screen*/
@@ -94,7 +94,7 @@ footer > a:hover {
 
 .panel-login>.panel-heading a{
 	text-decoration: none;
-	color: #666;
+	color: #d8b2d8;
 	font-weight: bold;
 	font-size: 15px;
 	-webkit-transition: all 0.1s linear;
@@ -102,7 +102,7 @@ footer > a:hover {
 	transition: all 0.1s linear;
 }
 .panel-login>.panel-heading a.active{
-	color: #428bca;
+	color: ##b266b2;
 	font-size: 18px;
 }
 .panel-login>.panel-heading hr{
@@ -132,7 +132,7 @@ footer > a:hover {
 	border-color: #ccc;
 }
 .btn-login {
-	background-color: #59B2E0;
+	background-color: #d8b2d8;
 	outline: none;
 	color: #fff;
 	font-size: 14px;
@@ -140,17 +140,17 @@ footer > a:hover {
 	font-weight: normal;
 	padding: 14px 0;
 	text-transform: uppercase;
-	border-color: #59B2E6;
+	border-color: #cc99cc;
 }
 .btn-login:hover,
 .btn-login:focus {
 	color: #fff;
-	background-color: #53A3CD;
-	border-color: #53A3CD;
+	background-color: ##b266b2;
+	border-color: ##b266b2;
 }
 
 .btn-register {
-	background-color: #59B2E0;
+	background-color: #d8b2d8;
 	outline: none;
 	color: #fff;
 	font-size: 14px;
@@ -158,13 +158,13 @@ footer > a:hover {
 	font-weight: normal;
 	padding: 14px 0;
 	text-transform: uppercase;
-	border-color: #59B2E6;
+	border-color: #cc99cc;
 }
 .btn-register:hover,
 .btn-register:focus {
 	color: #fff;
-	background-color: #53A3CD;
-	border-color: #53A3CD;
+	background-color: #b266b2;
+	border-color: #b266b2;
 }
 
 #editor { 
@@ -192,6 +192,10 @@ footer > a:hover {
     position: relative;
 }
 
+.editImg:hover {
+    background-color: #b266b2;
+}
+
 .TeamCode {
     text-align:center;
     font-weight:bold;
@@ -209,18 +213,22 @@ footer > a:hover {
     margin-top: 20px;
 }
 
-.thumbnail a :hover {
-    background-color: #a8a8a8;
-}
-
 .DeleteUserIcon {
     width: 33px;
     height: 33px;
 }
 
+.DeleteUserIcon:hover {
+    background-color: #d8b2d8;
+}
+
 .AddUserToProject {
     width: 66px;
     height: 66px;
+}
+
+.AddUserToProject:hover {
+    background-color: #d8b2d8;
 }
 
 .row {
@@ -255,10 +263,18 @@ footer > a:hover {
      top: -20px;
 }
 
+.multiIcon:hover {
+    background-color: #b266b2;
+}
+
 .addFile {
     width: 66px;
     height: 66px;
     margin: 10px 0px 0px 15px;
+}
+
+.addFile:hover {
+    background-color: #b266b2;
 }
 
 .Trash {
@@ -269,10 +285,18 @@ footer > a:hover {
     margin-top: 4px;
 }
 
+.Trash:hover {
+    background-color: #b266b2;
+}
+
 .File {
     width: 66px;
     height: 66px;
     margin: 10px 0px 0px 15px;
+}
+
+.File:hover {
+    background-color: #b266b2;
 }
 
 .addFolder {
@@ -287,6 +311,10 @@ footer > a:hover {
     margin: 10px 0px 0px 15px;
 }
 
+.folderImg:hover {
+    background-color: #b266b2;
+}
+
 .navbar-header {
     background-color: #404040;
 }
@@ -296,10 +324,25 @@ footer > a:hover {
      width: 33px;
 }
 
+<<<<<<< HEAD
+a {
+    color: #000;
+}
+
+a:hover {
+    color: #b266b2;
+    text-decoration: none;
+}
+
+h1:hover {
+    color: #b266b2;
+    text-decoration: none;
+=======
 .editProjectName {
     width: auto;
 }
 
 .email-label {
     width: auto;
+>>>>>>> 55e6d4168afdda602347dfb664eba5b9859ea685
 }
