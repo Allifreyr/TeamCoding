@@ -102,13 +102,13 @@ namespace TeamCode.Services
             List<File> allFiles = _db.Files.Where(f => f.project.id == dbFile.project.id).ToList();
             for (var i = 0; i < allFiles.Count(); i++)
             {
-                if (allFiles[i].fileName == file.fileName && allFiles[i].fileType == file.fileType)
+                if(allFiles[i].fileName == file.fileName && allFiles[i].fileType == file.fileType)
                 {
                     //Vantar skilabod her, "Filename already taken in project."
                     return null;
                 }
             }
-            if (dbFile.id == file.id)
+            if(dbFile.id == file.id)
             {
                 dbFile.content = file.content;
                 dbFile.fileName = file.fileName;

@@ -36,7 +36,7 @@ namespace TeamCode.Controllers
 
                 for (int i = 0; i < up.Count; i++)
                 {
-                    if (up[i].user.Id == Session["userId"].ToString())
+                    if(up[i].user.Id == Session["userId"].ToString())
                     {
                         userFound = true;
                     }
@@ -55,32 +55,13 @@ namespace TeamCode.Controllers
             }
             catch
             {
-                if (Request.IsAuthenticated)
+                if(Request.IsAuthenticated)
                 {
                     return RedirectToAction("Index", "MyProjects");
                 }
                 return RedirectToAction("Index", "Home");
             }
 
-            //Check if logged in user is owner of project
-            /*if (!userFound)
-            {
-                try
-                {
-                    if (file.user.Id != Session["userId"].ToString())
-                    {
-                        return RedirectToAction("Index", "MyProjects"); //Redirect to Myproject
-                    }
-                }
-                catch
-                {
-                    if (Request.IsAuthenticated)
-                    {
-                        return RedirectToAction("Index", "MyProjects");
-                    }
-                    return RedirectToAction("Index", "Home");
-                }
-            }*/
 
             ViewBag.Code = _db.Files.Where(gvc => gvc.id == id).SingleOrDefault().content;
             ViewBag.documentID = id.Value;
