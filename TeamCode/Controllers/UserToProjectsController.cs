@@ -118,10 +118,19 @@ namespace TeamCode.Controllers
                 var userInTable = (from p in _db.UsersToProjects                        
                                     where p.user.Email == userToProject.userId
                                     select p).ToList();
+                var userExists = (from p in _db.Users
+                                  where p.Email == userToProject.userId
+                                  select p).ToList();
                 var project = ProjectService.Instance.GetProjectByID(userToProject.projectId);
 
                 if(project == null || project.user.Id == userToProject.userId)
                 {
+                    return View("Create");
+                }
+
+                if(userExists.Count == 0)
+                {
+                    ModelState.AddModelError("Email", "This Email doesn't exist. Please check the spelling");
                     return View("Create");
                 }
                 
@@ -129,7 +138,7 @@ namespace TeamCode.Controllers
                 {
                     for (int i = 0; i < userInTable.Count; i++)
                     {
-                        if (userInTable[i].project.id == userToProject.projectId)
+                        if(userInTable[i].project.id == userToProject.projectId)
                         {
                             //If user already exists in project then this error messages appears.
                             ModelState.AddModelError("Email", "Email address already exists for this project. Please enter a different email address.");
@@ -211,7 +220,7 @@ namespace TeamCode.Controllers
             }
             var projectId = _db.UsersToProjects.Find(id).project.id;
             var userToProjectId = _db.UsersToProjects.Find(id).id;
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 UserToProjects up = _db.UsersToProjects.Find(id);
                 _db.UsersToProjects.Remove(up);
@@ -225,7 +234,7 @@ namespace TeamCode.Controllers
         /*public ActionResult DeleteFile(int? id)
         {
             var projectId = _db.Files.Find(id).project.id;
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 File file = _db.Files.Find(id);
                 _db.Files.Remove(file);

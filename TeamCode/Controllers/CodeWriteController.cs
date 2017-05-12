@@ -30,52 +30,38 @@ namespace TeamCode.Controllers
             int projectId = file.project.id;
             List<UserToProjects> up = UserToProjectsService.Instance.GetUserWithProjectID(projectId);
             bool userFound = false;
-            //Check if logged in user is member of project
+            //Check if logged in user is owner or member of project
             try
             {
 
                 for (int i = 0; i < up.Count; i++)
                 {
-                    if (up[i].user.Id == Session["userId"].ToString())
+                    if(up[i].user.Id == Session["userId"].ToString())
                     {
                         userFound = true;
                     }
                 }
 
-                if(!userFound)
+                if (file.user.Id == Session["userId"].ToString())
                 {
-                    return RedirectToAction("Shared", "MyProjects"); //Redirect to Myproject
+                    userFound = true;
+                }
+
+                    if (!userFound)
+                {
+                    return RedirectToAction("Index", "MyProjects"); //Redirect to Myproject
                 }
 
             }
             catch
             {
-                if (Request.IsAuthenticated)
+                if(Request.IsAuthenticated)
                 {
-                    return RedirectToAction("Shared", "MyProjects");
+                    return RedirectToAction("Index", "MyProjects");
                 }
                 return RedirectToAction("Index", "Home");
             }
 
-            //Check if logged in user is owner of project
-            if (!userFound)
-            {
-                try
-                {
-                    if (file.user.Id != Session["userId"].ToString())
-                    {
-                        return RedirectToAction("Index", "MyProjects"); //Redirect to Myproject
-                    }
-                }
-                catch
-                {
-                    if (Request.IsAuthenticated)
-                    {
-                        return RedirectToAction("Index", "MyProjects");
-                    }
-                    return RedirectToAction("Index", "Home");
-                }
-            }
 
             ViewBag.Code = _db.Files.Where(gvc => gvc.id == id).SingleOrDefault().content;
             ViewBag.documentID = id.Value;
