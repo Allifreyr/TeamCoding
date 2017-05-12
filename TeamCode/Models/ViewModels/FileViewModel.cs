@@ -12,10 +12,12 @@ namespace TeamCode.Models
         [Key]
         public int id { get; set; }
         [Required(ErrorMessage = "Name of file is required!")]
+        [Display(Name = "File name")]
         public string fileName { get; set; }
         [AllowHtml]
         public string content { get; set; }
         [Required(ErrorMessage = "Filetype is required!")]
+        [Display(Name = "File type")]
         public string fileType { get; set; }
 
         public int projectid { get; set; }
