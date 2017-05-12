@@ -6,7 +6,7 @@
 
 <div>
     <a href='@Url.Action("Index","UserToProjects", new { id = ViewContext.RouteData.Values["ID"]})'>
-        <img src="~/img/multipleIcon.png" style="width: 66px; height: 66px; float: right; position: relative; top: -20px;" />
+        <img class="multiIcon" src="~/img/multipleIcon.png" alt="multi"/>
     </a>
     <h2>@ViewBag.ProjectName</h2>
     <p>Owner: @ViewBag.ProjectOwner</p>
@@ -14,9 +14,9 @@
     
 
 <div class="col-sm-6 col-md-3">
-    <div class="thumbnail" style="width: 250px; height: 150px; margin-top: 20px;">
+    <div class="thumbnail">
         <a href='@Url.Action("CreateFile","MyFiles", new { id = ViewContext.RouteData.Values["ID"]})'>
-            <img src="~/img/addFile.jpg" style="width: 66px; height: 66px; margin: 10px 0px 0px 15px;" />
+            <img class="addFile" src="~/img/addFile.jpg" alt="add" />
         </a>
         <div class="caption">
             <h3>New File</h3>
@@ -29,17 +29,17 @@
 {
     string shortTitle = (item.fileName.Length + 3) > 12 ? item.fileName.Substring(0, 12) + ".." : item.fileName + ".js";
     <div class="fileTable col-sm-6 col-md-3">
-        <div class="thumbnail" style="width: 250px; height: 150px; margin-top: 20px;">
+        <div class="thumbnail">
             <div class="editDeleteFile">
                 <a href='@Url.Action("DeleteFile", new { id = item.id })' onclick="return confirm('Are you sure you wish to delete this project?');">
-                    <img src="~/img/Delete.png" style="width: 22px; height: 22px; float: right; position: relative; margin-top: 4px;" />
+                    <img class="Trash" src="~/img/Delete.png" alt="trash"/>
                 </a>
                 <a href="@Url.Action("Edit", "MyFiles", new { id = item.id })">
-                    <img alt="project" src="~/img/editsvg.png" style="width: 33px; height: 33px; float: right; position: relative;" />
+                    <img class="editImg" src="~/img/editsvg.png" alt="pencil"/>
                 </a>
             </div>
             <a href='@Url.Action("Index","CodeWrite", new { id = item.id })' class="fileImg">
-                <img alt="file" src="~/img/file.png" style="width: 66px; height: 66px; margin: 10px 0px 0px 15px;" />
+                <img class="File" src="~/img/file.png" alt="file"/>
             </a>
             <div class="caption">
                 <h3>@shortTitle</h3>
