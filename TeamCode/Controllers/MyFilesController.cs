@@ -63,7 +63,7 @@ namespace TeamCode.Controllers
             int projectId = id.Value;
             string userId = User.Identity.GetUserId();
 
-            //Tékka á nöfnum
+            //Check names
             FileService.Instance.AddNewFile(userId, projectId);
             return RedirectToAction("Index", "Myfiles", new { id = projectId });
 

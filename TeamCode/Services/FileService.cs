@@ -133,10 +133,11 @@ namespace TeamCode.Services
         public void AddNewFile(string userId, int projectId)
         {
             File file = new File();
+            int fileCount = _db.Files.Where(pa => pa.project.id == projectId).Count() + 1;  //Not perfect, just a temp fix
             file.project = (from p in _db.Projects
                             where p.id == projectId
                             select p).SingleOrDefault();
-            file.fileName = "Untitled";
+            file.fileName = "Untitled(" + fileCount + ")";
             file.fileType = ".js";
             file.content = "Vei þetta virkaði! - Hello world og eitthvað þannig..";
             file.user = (from u in _db.Users
