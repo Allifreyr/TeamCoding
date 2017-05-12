@@ -32,7 +32,6 @@ namespace TeamCode.Controllers
             //Check if logged in user is owner or member of project
             try
             {
-
                 for(int i = 0; i < up.Count; i++)
                 {
                     if(up[i].user.Id == Session["userId"].ToString())
@@ -46,11 +45,10 @@ namespace TeamCode.Controllers
                     userFound = true;
                 }
 
-                    if(!userFound)
+                if(!userFound)
                 {
                     return RedirectToAction("Index", "MyProjects"); //Redirect to Myproject
                 }
-
             }
             catch
             {
@@ -61,14 +59,12 @@ namespace TeamCode.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-
             ViewBag.Code = _db.Files.Where(c => c.id == id).SingleOrDefault().content;
             ViewBag.documentID = id.Value;
             ViewBag.fileType = _db.Files.Where(gft => gft.id == id).SingleOrDefault().fileType;
             ViewBag.fileName = _db.Files.Where(gfn => gfn.id == id).SingleOrDefault().fileName;
             ViewBag.projectID = FileService.Instance.GetFileProjectID(id.Value).id;
             ViewBag.userID = _db.Files.Find(id).user;
-
 
             return View();
         }

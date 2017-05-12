@@ -117,8 +117,6 @@ namespace TeamCode.Controllers
                 {
                     return View("Error");
                 }
-
-
             }
 
             return View(userToProject);
