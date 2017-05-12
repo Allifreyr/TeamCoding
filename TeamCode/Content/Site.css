@@ -79,7 +79,7 @@ footer a {
     color: #fff;
 }
 
-footer a:hover {
+footer > a:hover {
     color: #999;
     text-decoration: none;
 }

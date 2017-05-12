@@ -10,66 +10,63 @@
 
 <p>
     @*@using (Html.BeginForm("addUserToProject", "UserToProjects", FormMethod.Post))
-    {
-        @Html.TextBoxFor(model => model.userId)
-        @Html.ValidationMessageFor(model => model.
-        <button type="submit">Subscribe</button>
-    }
-
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(m => m.id)
-    @Html.HiddenFor(m => m.projectId, new { id = ViewContext.RouteData.Values["ID"] })
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.userId, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(m => m.userId, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(m => m.userId, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-default" />
-        </div>
-    </div>*@
-
-    @Html.ActionLink("Add new member to Project", "Create", new { id = ViewContext.RouteData.Values["ID"] })
-
- @*   @using (Html.BeginForm())
         {
-            <p>
-                Username: @Html.TextBox("SearchString")<br/>
-                <input type="submit"value="Search"/>
-            </p>
+            @Html.TextBoxFor(model => model.userId)
+            @Html.ValidationMessageFor(model => model.
+            <button type="submit">Subscribe</button>
         }
-    </p>*@
-<table class="table">
-    <tr>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.user.Email)
-        </td>
-        <td>
-          @* @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-    @Html.ActionLink("Details", "Details", new { id=item.id }) |*@
-            <a href="@Url.Action("Delete", "UserToProjects", new { id = item.id })">
-                    <img alt="DeleteUser" src="~/img/removeUser.png" style="width: 33px; height: 33px;" />
-        </td>
-    </tr>
-}
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(m => m.id)
+        @Html.HiddenFor(m => m.projectId, new { id = ViewContext.RouteData.Values["ID"] })
 
-</table>
+        <div class="form-group">
+            @Html.LabelFor(m => m.userId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(m => m.userId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(m => m.userId, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-<script>
-    $(function () {
-        $("#searchBtn").click(function () {
-            window.location.assign("TeamCode/Views/MyProjects/Index.cshtml");
-        })
-    })
-</script>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>*@
+    <a href="@Url.Action("Create", "UserToProjects", new { id = ViewContext.RouteData.Values["ID"] })">
+        <img alt="addToProj" src="~/img/add-user.png" style="width: 66px; height: 66px;" />
+        @Html.ActionLink(" ", "Create", new { id = ViewContext.RouteData.Values["ID"] }) @*Had to include this, otherwise the Footer would get messed up*@
+        @*   @using (Html.BeginForm())
+                {
+                    <p>
+                        Username: @Html.TextBox("SearchString")<br/>
+                        <input type="submit"value="Search"/>
+                    </p>
+                }
+            </p>*@
+        <table class="table">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.user.Email)
+                    </td>
+                    <td>
+                        @* @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+                            @Html.ActionLink("Details", "Details", new { id=item.id }) |*@
+                        <a href="@Url.Action("Delete", "UserToProjects", new { id = item.id })">
+                            <img alt="DeleteUser" src="~/img/removeUser.png" style="width: 33px; height: 33px;" />
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+        <script>
+            $(function () {
+                $("#searchBtn").click(function () {
+                    window.location.assign("TeamCode/Views/MyProjects/Index.cshtml");
+                })
+            })
+        </script>
