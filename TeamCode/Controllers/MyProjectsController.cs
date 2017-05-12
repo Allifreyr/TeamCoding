@@ -24,7 +24,18 @@ namespace TeamCode.Controllers
             Session["userId"] = userId;
 
             List<Project> projects = ProjectService.Instance.GetProjectsByUser(userId);
+
+            return View(projects);
+        }
+
+        [Authorize]
+        public ActionResult Shared()
+        {
+            string userId = User.Identity.GetUserId();
+            Session["userId"] = userId;
+
             List<UserToProjects> upShared = UserToProjectsService.Instance.GetProjectsSharedWithUser(userId);
+            List<Project> projects = new List<Project>();
 
             for (int i = 0; i < upShared.Count; i++)
             {
