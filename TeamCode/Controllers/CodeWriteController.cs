@@ -27,6 +27,9 @@ namespace TeamCode.Controllers
             }
 
             File file = _db.Files.Find(id);
+            int projectId = file.project.id;
+            List<UserToProjects> up = UserToProjectsService.Instance.GetUserWithProjectID(projectId);
+
             try
             {
                 if(file.user.Id != Session["userId"].ToString())
@@ -42,10 +45,7 @@ namespace TeamCode.Controllers
                 }
                 return RedirectToAction("Index", "Home");
             }
-            
 
-            //ViewBag.Code = "alert('Hello world!');";
-            //ViewBag.Code = FileService.Instance.GetValueFromContent(id.Value);
             ViewBag.Code = _db.Files.Where(gvc => gvc.id == id).SingleOrDefault().content;
             ViewBag.documentID = id.Value;
             //ViewBag.fileType = FileService.Instance.GetFileType(id.Value);

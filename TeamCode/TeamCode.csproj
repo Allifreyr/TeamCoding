@@ -319,6 +319,7 @@
     <Content Include="Views\UserToProjects\Details.cshtml" />
     <Content Include="Views\UserToProjects\Edit.cshtml" />
     <Content Include="Views\UserToProjects\Index.cshtml" />
+    <Content Include="Views\MyProjects\Shared.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
