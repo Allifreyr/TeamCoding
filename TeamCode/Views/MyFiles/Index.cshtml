@@ -27,7 +27,7 @@
 
 @foreach (var item in Model)
 {
-    string shortTitle = (item.fileName.Length + 3) > 12 ? item.fileName.Substring(0, 12) + ".." : item.fileName + ".js";
+    string shortTitle = (item.fileName.Length + 3) > 15 ? item.fileName.Substring(0, 15) + ".." : item.fileName + ".js";
     <div class="fileTable col-sm-6 col-md-3">
         <div class="thumbnail">
             <div class="editDeleteFile">
