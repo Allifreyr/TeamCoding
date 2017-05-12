@@ -209,6 +209,10 @@ footer > a:hover {
     margin-top: 20px;
 }
 
+.thumbnail a :hover {
+    background-color: #a8a8a8;
+}
+
 .DeleteUserIcon {
     width: 33px;
     height: 33px;
