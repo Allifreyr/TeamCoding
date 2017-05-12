@@ -50,6 +50,7 @@ namespace TeamCode.Controllers
             int projectId = id.Value;
             string userId = User.Identity.GetUserId();
 
+            //Check names
             FileService.Instance.AddNewFile(userId, projectId);
             return RedirectToAction("Index", "Myfiles", new { id = projectId });
 

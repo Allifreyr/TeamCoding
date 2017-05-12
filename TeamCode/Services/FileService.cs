@@ -124,10 +124,20 @@ namespace TeamCode.Services
         public void AddNewFile(string userId, int projectId)
         {
             File file = new File();
+            Random random = new Random();
+            int fileCount = _db.Files.Where(pa => pa.project.id == projectId).Count() + 1;  //Not perfect, just a temp fix
+            var maxer = _db.Files.Max(r => r.id);
+            string randomStringGen = "";
+
+            for (int i = 0; i < 6; i++)
+            {
+                randomStringGen += Convert.ToChar(Convert.ToInt32(Math.Floor(26 * random.NextDouble() + 65))).ToString().ToLower();
+            }
+
             file.project = (from p in _db.Projects
                             where p.id == projectId
                             select p).SingleOrDefault();
-            file.fileName = "Untitled";
+            file.fileName = "File(" + randomStringGen + ")";            //One in a billion to get the same randomstring.
             file.fileType = ".js";
        //     file.content = "Vei þetta virkaði! - Hello world og eitthvað þannig..";
             file.user = (from u in _db.Users
