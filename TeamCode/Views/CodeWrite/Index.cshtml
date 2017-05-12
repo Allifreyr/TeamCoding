@@ -14,9 +14,6 @@
     @Html.HiddenFor(m => m.projectid, new { @Value = ViewBag.projectID })
     @Html.HiddenFor(m => m.userid, new { @Value = ViewBag.userID })
     @Html.HiddenFor(m => m.fileName, new { @Value = ViewBag.fileName})
-
-             @*< img class="editorSave" src="~/img/save.png" style="width: 33px; height: 33px;" />
-    </a>*@
     <input type="submit" value="Save code" />
 }
 
@@ -25,9 +22,8 @@
 @section scripts
 {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js" type="text/javascript" charset="utf-8"></script>
-    @*@Scripts.Render("https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js")*@
 
-    @*SignalR connection*@
+    @*SignalR and Ace editor connection*@
     <script src="~/Scripts/jquery.signalR-2.2.2.js"></script>
     <script src="~/signalr/hubs"></script>
 

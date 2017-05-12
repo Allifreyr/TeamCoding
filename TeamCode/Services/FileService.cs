@@ -19,7 +19,10 @@ namespace TeamCode.Services
             get
             {
                 if(instance == null)
+                {
                     instance = new FileService();
+                }
+
                 return instance;
             }
         }
@@ -77,6 +80,7 @@ namespace TeamCode.Services
         public List<File> GetAllFiles()
         {
             var fileList = (from f in _db.Files select f).ToList();
+
             return fileList;
         }
 
@@ -91,6 +95,7 @@ namespace TeamCode.Services
         {
             File dbFile = _db.Files.Where(f => f.id == file.id).SingleOrDefault();
             List<File> allFiles = _db.Files.Where(f => f.project.id == dbFile.project.id).ToList();
+
             for(var i = 0; i < allFiles.Count(); i++)
             {
                 if(allFiles[i].fileName == file.fileName && allFiles[i].fileType == file.fileType)
@@ -98,13 +103,16 @@ namespace TeamCode.Services
                     return null;
                 }
             }
+
             if(dbFile.id == file.id)
             {
                 dbFile.content = file.content;
                 dbFile.fileName = file.fileName;
                 dbFile.fileType = file.fileType;
                 _db.Entry(dbFile).State = EntityState.Modified;
+
                 _db.SaveChanges();
+
                 return dbFile;
             }
 
@@ -113,8 +121,8 @@ namespace TeamCode.Services
 
         public void SetValueToContent(int? fileID, string content)
         {
-
             var fileByID = (from f in _db.Files where f.project.id == fileID select f).SingleOrDefault();
+
             fileByID.content = content;
 
             _db.SaveChanges();
@@ -123,9 +131,9 @@ namespace TeamCode.Services
         public void AddNewFile(string userId, int projectId)
         {
             File file = new File();
+
             Random random = new Random();
-            int fileCount = _db.Files.Where(pa => pa.project.id == projectId).Count() + 1;  //Not perfect, just a temp fix
-            var maxer = _db.Files.Max(r => r.id);
+
             string randomStringGen = "";
 
             for(int i = 0; i < 6; i++)
@@ -138,11 +146,12 @@ namespace TeamCode.Services
                             select p).SingleOrDefault();
             file.fileName = "File(" + randomStringGen + ")";            //One in a billion to get the same randomstring.
             file.fileType = ".js";
-       //     file.content = "Vei þetta virkaði! - Hello world og eitthvað þannig..";
             file.user = (from u in _db.Users
                          where u.Id == userId
                          select u).SingleOrDefault();
+
             _db.Files.Add(file);
+
             _db.SaveChanges();
         }
 
@@ -154,11 +163,12 @@ namespace TeamCode.Services
                             select p).SingleOrDefault();
             file.fileName = fileName;
             file.fileType = fileType;
-          //  file.content = "Vei virkadi - Hello World og eitthvad solleidis :D !!!";
             file.user = (from u in _db.Users
                          where u.Id == userId
                          select u).SingleOrDefault();
+
             _db.Files.Add(file);
+
             _db.SaveChanges();
         }
 
