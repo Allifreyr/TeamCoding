@@ -9,7 +9,7 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: #404040;">
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: #404040;"> <!--Could't figure out where to put the colour in .CSS-->
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -28,7 +28,7 @@
                         </a>
                     </li>
                 </ul>
-                    @Html.Partial("_LoginPartial")
+                @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
@@ -42,10 +42,10 @@
             </p>
             <a>@Html.ActionLink("Support", "Support", "Home")</a>
         </footer>
-    </div>  
+    </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

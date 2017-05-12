@@ -36,12 +36,7 @@ h1 {
 }
 
 .navbar-nav > li > a:hover, .navbar-nav > li > a:focus {
-    color: #000;
-}
-
-.navbar-inverse {
-  border-color: transparent;
-  height: 60px;
+    color: #404040;
 }
 
 .layoutLogo {
@@ -79,7 +74,7 @@ footer a {
     color: #fff;
 }
 
-footer a:hover {
+footer > a:hover {
     color: #999;
     text-decoration: none;
 }
@@ -190,11 +185,11 @@ footer a:hover {
     top: 13%;
 }
 
-.editImg button {
-    border: none;
-    background: url(~/img/editsvg.png);
-    width: 66px;
-    height: 66px;
+.editImg {
+    width: 33px;
+    height: 33px;
+    float: right;
+    position: relative;
 }
 
 .TeamCode {
@@ -204,14 +199,95 @@ footer a:hover {
     color: #404040;
 }
 
-TCLogo {
-    margin-top: -100px;
-}
-
 .itemInTable {
     display: flex;
 }
 
-.thumbnail:hover {
-    color: midnightblue;
+.thumbnail {
+    width: 250px; 
+    height: 150px; 
+    margin-top: 20px;
+}
+
+.DeleteUserIcon {
+    width: 33px;
+    height: 33px;
+}
+
+.AddUserToProject {
+    width: 66px;
+    height: 66px;
+}
+
+.row {
+    display: block;
+}
+
+.FrontLogo {
+    margin-top: -100px;
+}
+
+.form-group {
+     width: 700px;
+}
+
+.checkbox {
+    padding-left: 95px;
+}
+
+.regForm {
+    display: none;
+}
+
+.col-md-10 {
+    width:550px;
+}
+
+.multiIcon {
+     width: 66px; 
+     height: 66px; 
+     float: right; 
+     position: relative; 
+     top: -20px;
+}
+
+.addFile {
+    width: 66px;
+    height: 66px;
+    margin: 10px 0px 0px 15px;
+}
+
+.Trash {
+    width: 22px;
+    height: 22px;
+    float: right;
+    position: relative;
+    margin-top: 4px;
+}
+
+.File {
+    width: 66px;
+    height: 66px;
+    margin: 10px 0px 0px 15px;
+}
+
+.addFolder {
+    width: 66px;
+    height: 66px;
+    margin: 10px 0px 0px 15px;
+}
+
+.folderImg {
+    width: 66px;
+    height: 66px;
+    margin: 10px 0px 0px 15px;
+}
+
+.navbar-header {
+    background-color: #404040;
+}
+
+.profileImg {
+     height: 33px;
+     width: 33px;"
 }

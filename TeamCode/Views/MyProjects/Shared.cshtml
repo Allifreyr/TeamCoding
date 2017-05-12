@@ -24,14 +24,14 @@ else
         {
             string shorTitle = item.projectName.Length > 12 ? item.projectName.Substring(0, 12) + ".." : item.projectName;
             <div class="projectTable col-sm-6 col-md-3">
-                <div class="thumbnail" style="width: 250px; height: 150px; margin-top: 20px;">
+                <div class="thumbnail">
                     <div class="editDeleteProject">
                         <a href="@Url.Action("Edit", "MyProjects", new { id = item.id })">
-                            <img alt="edit" src="~/img/editsvg.png" style="width: 33px; height: 33px; float: right; position: relative;" />
+                            <img class="editImg" src="~/img/editsvg.png" alt="edit" />
                         </a>
                     </div>
                     <a href='@Url.Action("Index", "MyFiles", new { id = item.id })' class="folderImg">
-                        <img alt="project" src="~/img/folder.png" style="width: 66px; height: 66px; margin: 10px 0px 0px 15px;" />
+                        <img class="folderImg" src="~/img/folder.png" alt="project" />
                     </a>
                     <div class="caption">
                         <h3>@shorTitle</h3>

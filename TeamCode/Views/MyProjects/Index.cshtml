@@ -21,9 +21,9 @@ else
     </div>
     <div>
         <div class="col-sm-6 col-md-3">
-            <div class="thumbnail" style="width: 250px; height: 150px; margin-top: 20px;">
+            <div class="thumbnail">
                 <a href='@Url.Action("CreateProject", "MyProjects")'>
-                    <img alt="addProject" src="~/img/addFolder.png" style="width: 66px; height: 66px; margin: 10px 0px 0px 15px;" />
+                    <img class="addFolder" src="~/img/addFolder.png" alt="addProject" />
                 </a>
                 <div class="caption">
                     <h3>New Project</h3>
@@ -35,17 +35,17 @@ else
         {
             string shorTitle = item.projectName.Length > 12 ? item.projectName.Substring(0, 12) + ".." : item.projectName;
             <div class="projectTable col-sm-6 col-md-3">
-                <div class="thumbnail" style="width: 250px; height: 150px; margin-top: 20px;">
+                <div class="thumbnail">
                     <div class="editDeleteProject">
                         <a href='@Url.Action("DeleteProject", new { id = item.id })' onclick="return confirm('Are you sure you wish to delete this project?');">
-                            <img alt="delete" src="~/img/Delete.png" style="width: 22px; height: 22px; float: right; position: relative; margin-top: 4px;" />
+                            <img class="Trash" src="~/img/Delete.png" alt="delete"/>
                         </a>
                         <a href="@Url.Action("Edit", "MyProjects", new { id = item.id })">
-                            <img alt="edit" src="~/img/editsvg.png" style="width: 33px; height: 33px; float: right; position: relative;" />
+                            <img class="editImg" src="~/img/editsvg.png" alt="edit"/>
                         </a>
                     </div>
                     <a href='@Url.Action("Index", "MyFiles", new { id = item.id })' class="folderImg">
-                        <img alt="project" src="~/img/folder.png" style="width: 66px; height: 66px; margin: 10px 0px 0px 15px;" />
+                        <img class="folderImg" src="~/img/folder.png" alt="project" />
                     </a>
                     <div class="caption">
                         <h3>@shorTitle</h3>

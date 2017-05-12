@@ -277,6 +277,7 @@ table {
   }
   .navbar {
     display: none;      
+    background-color: #404040;
   }
   .table td,
   .table th {
@@ -3342,6 +3343,7 @@ input[type="button"].btn-block {
   border-top: 0 dotted;
   border-bottom: 4px solid #000000;
   content: "";
+  background-color: #404040;
 }
 
 .dropup .dropdown-menu,
@@ -3795,6 +3797,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .nav:after {
   display: table;
   content: " ";
+  background-color: #404040;
 }
 
 .nav:after {
@@ -3883,7 +3886,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .nav-tabs > li.active > a:focus {
   color: #555555;
   cursor: default;
-  background-color: #ffffff;
+  background-color: #404040;
   border: 1px solid #dddddd;
   border-bottom-color: transparent;
 }
@@ -3914,7 +3917,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .nav-tabs.nav-justified > .active > a {
-  border-bottom-color: #ffffff;
+  border-bottom-color: #404040;
 }
 
 .nav-pills > li {
@@ -3932,7 +3935,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .nav-pills > li.active > a,
 .nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus {
-  color: #ffffff;
+  color: #404040;
   background-color: #428bca;
 }
 
@@ -4024,11 +4027,12 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar {
-  position: relative;
-  z-index: 1000;
-  min-height: 50px;
-  margin-bottom: 20px;
-  border: 1px solid transparent;
+    background-color: #404040;
+    position: relative;
+    z-index: 1000;
+    min-height: 50px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
 }
 
 .navbar:before,
@@ -4218,7 +4222,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   margin-top: 8px;
   margin-right: 15px;
   margin-bottom: 8px;
-  background-color: transparent;
+  background-color: #404040;
   border: 1px solid transparent;
   border-radius: 4px;
 }
@@ -4256,7 +4260,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
     float: none;
     width: auto;
     margin-top: 0;
-    background-color: transparent;
+    background-color: #404040;
     border: 0;
     box-shadow: none;
   }
@@ -4397,7 +4401,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
   color: #5e5e5e;
-  background-color: transparent;
+  background-color: #404040;
 }
 
 .navbar-default .navbar-text {
