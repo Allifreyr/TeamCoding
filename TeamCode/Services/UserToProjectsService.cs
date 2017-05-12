@@ -13,6 +13,7 @@ namespace TeamCode.Services
     {
 
         private static UserToProjectsService instance;
+        private ApplicationDbContext _db = new ApplicationDbContext();
 
         public static UserToProjectsService Instance
         {
@@ -24,17 +25,22 @@ namespace TeamCode.Services
             }
         }
 
-        private ApplicationDbContext _db;
-
         public List<UserToProjects> GetProjectsSharedWithUser(string userId)
         {
 
-            _db = new ApplicationDbContext();
+          //  _db = new ApplicationDbContext();
             var projectsShared = _db.UsersToProjects.Where(up => up.user.Id == userId).ToList();
 
    /*         var projectsShared = (from up in _db.UsersToProjects
                                   where up.user.Id == userId
                                   select up).ToList();*/
+
+            return projectsShared;
+        }
+
+        public List<UserToProjects> GetUserWithProjectID(int projectId)
+        {
+            var projectsShared = _db.UsersToProjects.Where(up => up.project.id == projectId).ToList();
 
             return projectsShared;
         }
