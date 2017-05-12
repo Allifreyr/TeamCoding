@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -51,9 +52,9 @@ namespace TeamCode.Services
             return projectList;
         }
 
-        public Project GetProjectByID(int projectID)
+        public Project GetProjectByID(int? projectID)
         {
-            var projectByID = (from p in _db.Projects where p.id == projectID select p).SingleOrDefault();
+            var projectByID = _db.Projects.Find(projectID);
 
             return projectByID;
         }
@@ -70,6 +71,24 @@ namespace TeamCode.Services
             _db.SaveChanges();
 
             return project.id;
+        }
+
+        public void SaveProject(Project proj)
+        {
+            Project dbProj = _db.Projects.Where(f => f.id == proj.id).SingleOrDefault();
+            dbProj.id = proj.id;
+            dbProj.projectName = proj.projectName;
+
+            _db.Entry(dbProj).State = EntityState.Modified;
+            _db.SaveChanges();
+        }
+
+        public void DeleteProject(int? id)
+        {
+            Project proj = _db.Projects.Find(id);
+            _db.Projects.Remove(proj);
+            _db.Entry(proj).State = EntityState.Deleted;
+            _db.SaveChanges();
         }
 
 

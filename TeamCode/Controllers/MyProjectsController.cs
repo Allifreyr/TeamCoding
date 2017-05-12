@@ -63,7 +63,7 @@ namespace TeamCode.Controllers
 
             ViewBag.ProjectName = ProjectService.Instance.GetProjectByID(id.Value).projectName;
 
-            Project proj = _db.Projects.Find(id);
+            Project proj = ProjectService.Instance.GetProjectByID(id);
             if(proj == null)
             {
                 return HttpNotFound();
@@ -88,8 +88,7 @@ namespace TeamCode.Controllers
 
             if(ModelState.IsValid)
             {
-                _db.Entry(proj).State = EntityState.Modified;
-                _db.SaveChanges();
+                ProjectService.Instance.SaveProject(proj);
                 return RedirectToAction("Index");
             }
             return View(proj);
@@ -101,10 +100,7 @@ namespace TeamCode.Controllers
             {
                 try
                 {
-                    Project proj = _db.Projects.Find(id);
-                    _db.Projects.Remove(proj);
-                    _db.Entry(proj).State = EntityState.Deleted;
-                    _db.SaveChanges();
+                    ProjectService.Instance.DeleteProject(id);
                     return RedirectToAction("Index");
                 }
                 catch

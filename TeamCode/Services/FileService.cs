@@ -95,7 +95,6 @@ namespace TeamCode.Services
             {
                 if(allFiles[i].fileName == file.fileName && allFiles[i].fileType == file.fileType)
                 {
-                    //Vantar skilabod her, "Filename already taken in project."
                     return null;
                 }
             }
@@ -161,6 +160,17 @@ namespace TeamCode.Services
                          select u).SingleOrDefault();
             _db.Files.Add(file);
             _db.SaveChanges();
+        }
+
+        public int DeleteFile(int? id)
+        {
+            int projId = _db.Files.Find(id).project.id;
+            File file = _db.Files.Find(id);
+            _db.Files.Remove(file);
+            _db.Entry(file).State = EntityState.Deleted;
+            _db.SaveChanges();
+
+            return projId;
         }
     }
 }
