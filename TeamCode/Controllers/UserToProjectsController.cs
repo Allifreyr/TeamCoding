@@ -14,37 +14,12 @@ namespace TeamCode.Controllers
     public class UserToProjectsController : Controller
     {
         private ApplicationDbContext _db = new ApplicationDbContext();
-        private object ex;
 
         // GET: UserToProjects
         //public ActionResult Index(string searchString)
         public ActionResult Index(int? id)
         {
-
-            /*  var users = from a in db.UsersToProjects
-                          select a;
-              if(!string.IsNullOrEmpty(searchString))
-              {
-                  users = users.Where(s => s.user.UserName.Contains(searchString));
-              }*/
-            //return View(users);
-
-            //    int projectId = ProjectService.Instance.GetProjectByID(id.Value).id;
-            //   Session["projectId"] = id.Value;
-            /*     var up = _db.UsersToProjects.Where(p => p.project.id == id.Value);
-
-                 UserToProjectsViewModel upvm = new UserToProjectsViewModel
-                 {
-                     ide = up.id,
-                     projectId = up.project.id,
-                     userId = null
-                 };
-                 return View(up);*/
-            //  return View();
-
-            //  var p = ProjectService.Instance.GetProjectByID(id.Value);
-
-            if(id == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -54,7 +29,7 @@ namespace TeamCode.Controllers
 
             var utpIndex = UserToProjectsService.Instance.GetProjectById(id);
 
-            if(utpIndex == null)
+            if (utpIndex == null)
             {
                 return View();
             }
@@ -65,12 +40,12 @@ namespace TeamCode.Controllers
         // GET: UserToProjects/Details/5
         public ActionResult Details(int? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserToProjects userToProject = _db.UsersToProjects.Find(id);
-            if(userToProject == null)
+            var userToProject = UserToProjectsService.Instance.FindUserWithProjectID(id);
+            if (userToProject == null)
             {
                 return HttpNotFound();
             }
@@ -82,25 +57,14 @@ namespace TeamCode.Controllers
         {
             ViewBag.ProjectName = ProjectService.Instance.GetProjectByID(id.Value);
 
-            if(id == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            UserToProjects up = new UserToProjects
-            {
-                project = (from p in _db.Projects
-                           where p.id == id.Value
-                           select p).SingleOrDefault(),
-                user = null
-            };
+            UserToProjects up = UserToProjectsService.Instance.NewUserToProject(id);
 
-            UserToProjectsViewModel upvm = new UserToProjectsViewModel
-            {
-                ide = up.id,
-                projectId = up.project.id,
-                userId = null
-            };
+            UserToProjectsViewModel upvm = UserToProjectsService.Instance.NewUserToProjectViewModel(up);
 
             return View(upvm);
         }
@@ -112,55 +76,40 @@ namespace TeamCode.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ide,userId,projectId")] UserToProjectsViewModel userToProject)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 //Check if user already has access to project
-                var userInTable = (from p in _db.UsersToProjects                        
-                                    where p.user.Email == userToProject.userId
-                                    select p).ToList();
-                var userExists = (from p in _db.Users
-                                  where p.Email == userToProject.userId
-                                  select p).ToList();
+                var uit = UserToProjectsService.Instance.userInTable(userToProject);
+                var ue = UserToProjectsService.Instance.userExists(userToProject);
                 var project = ProjectService.Instance.GetProjectByID(userToProject.projectId);
 
-                if(project == null || project.user.Id == userToProject.userId)
+                if (project == null || project.user.Id == userToProject.userId)
                 {
                     return View("Create");
                 }
 
-                if(userExists.Count == 0)
+                if (ue.Count == 0)
                 {
                     ModelState.AddModelError("Email", "This Email doesn't exist. Please check the spelling");
                     return View("Create");
                 }
-                
-                if(userInTable != null)
+
+                if (uit != null)
                 {
-                    for(int i = 0; i < userInTable.Count; i++)
+                    for (int i = 0; i < uit.Count; i++)
                     {
-                        if(userInTable[i].project.id == userToProject.projectId)
+                        if (uit[i].project.id == userToProject.projectId)
                         {
                             //If user already exists in project then this error messages appears.
                             ModelState.AddModelError("Email", "Email address already exists for this project. Please enter a different email address.");
                             return View("Create");
                         }
-
                     }
                 }
 
                 try
                 {
-                    var emailId = _db.Users.Where(bla => bla.Email == userToProject.userId).SingleOrDefault();
-                    UserToProjects up = new UserToProjects
-                    {
-                        id = userToProject.ide,
-                        project = (from p in _db.Projects
-                                   where p.id == userToProject.projectId
-                                   select p).SingleOrDefault(),
-                        user = emailId
-                    };
-                    _db.UsersToProjects.Add(up);
-                    _db.SaveChanges();
+                    var up = UserToProjectsService.Instance.UserToProjectList(userToProject);
 
                     return RedirectToAction("Index", new { id = up.project.id });
                 }
@@ -169,7 +118,7 @@ namespace TeamCode.Controllers
                     return View("Error");
                 }
 
-                
+
             }
 
             return View(userToProject);
@@ -183,12 +132,12 @@ namespace TeamCode.Controllers
         // GET: UserToProjects/Edit/5
         public ActionResult Edit(int? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserToProjects userToProject = _db.UsersToProjects.Find(id);
-            if(userToProject == null)
+            UserToProjects userToProject = UserToProjectsService.Instance.FindUserWithProjectID(id);
+            if (userToProject == null)
             {
                 return HttpNotFound();
             }
@@ -202,10 +151,9 @@ namespace TeamCode.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id")] UserToProjects userToProject)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                _db.Entry(userToProject).State = EntityState.Modified;
-                _db.SaveChanges();
+                UserToProjectsService.Instance.SaveUserToProject(userToProject);
                 return RedirectToAction("Index");
             }
             return View(userToProject);
@@ -214,51 +162,23 @@ namespace TeamCode.Controllers
         // GET: UserToProjects/Delete/5
         public ActionResult Delete(int? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var projectId = _db.UsersToProjects.Find(id).project.id;
-            var userToProjectId = _db.UsersToProjects.Find(id).id;
-            if(ModelState.IsValid)
+            var projectId = UserToProjectsService.Instance.FindUserWithProjectID(id).project.id;
+
+            if (ModelState.IsValid)
             {
-                UserToProjects up = _db.UsersToProjects.Find(id);
-                _db.UsersToProjects.Remove(up);
-                _db.Entry(up).State = EntityState.Deleted;
-                _db.SaveChanges();
+                UserToProjectsService.Instance.DeleteUserToProject(id);
                 return RedirectToAction("Index", "UserToProjects", new { id = projectId });
             }
             return View("Error");
         }
 
-        /*public ActionResult DeleteFile(int? id)
-        {
-            var projectId = _db.Files.Find(id).project.id;
-            if(ModelState.IsValid)
-            {
-                File file = _db.Files.Find(id);
-                _db.Files.Remove(file);
-                _db.Entry(file).State = EntityState.Deleted;
-                _db.SaveChanges();
-                return RedirectToAction("Index", "Myfiles", new { id = projectId });
-            }
-            return View("Error");
-        }*/
-
-        // POST: UserToProjects/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            UserToProjects userToProject = _db.UsersToProjects.Find(id);
-            _db.UsersToProjects.Remove(userToProject);
-            _db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
         protected override void Dispose(bool disposing)
         {
-            if(disposing)
+            if (disposing)
             {
                 _db.Dispose();
             }
@@ -271,7 +191,7 @@ namespace TeamCode.Controllers
         [HttpPost]
         public ActionResult addUserToProject(UserToProjectsViewModel model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 //TODO: SubscribeUser(model.Email);
             }
