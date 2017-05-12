@@ -295,3 +295,7 @@ footer > a:hover {
      height: 33px;
      width: 33px;"
 }
+
+.editProjectName {
+    width: auto;
+}
