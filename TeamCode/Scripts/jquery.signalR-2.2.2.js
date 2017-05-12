@@ -195,7 +195,7 @@
         format: function () {
             /// <summary>Usage: format("Hi {0}, you are {1}!", "Foo", 100) </summary>
             var s = arguments[0];
-            for (var i = 0; i < arguments.length - 1; i++) {
+            for(var i = 0; i < arguments.length - 1; i++) {
                 s = s.replace("{" + i + "}", arguments[i + 1]);
             }
             return s;
@@ -265,7 +265,7 @@
 
         if($.isArray(requestedTransport)) {
             // Go through transport array and remove an "invalid" tranports
-            for (var i = requestedTransport.length - 1; i >= 0; i--) {
+            for(var i = requestedTransport.length - 1; i >= 0; i--) {
                 var transport = requestedTransport[i];
                 if($.type(transport) !== "string" || !signalR.transports[transport]) {
                     connection.log("Invalid transport: " + transport + ", removing it from the transports list.");
@@ -2547,7 +2547,7 @@
         var i,
             length = arr.length,
             result = [];
-        for (i = 0; i < length; i += 1) {
+        for(i = 0; i < length; i += 1) {
             if(arr.hasOwnProperty(i)) {
                 result[i] = fun.call(thisp, arr[i], i, arr);
             }
@@ -2560,7 +2560,7 @@
     }
 
     function hasMembers(obj) {
-        for (var key in obj) {
+        for(var key in obj) {
             // If we have any properties in our callback map then we have callbacks and can exit the loop via return
             if(obj.hasOwnProperty(key)) {
                 return true;
@@ -2588,7 +2588,7 @@
         // We do this using a local var reference and *after* we've cleared the cache
         // so that if a fail callback itself tries to invoke another method we don't
         // end up with its callback in the list we're looping over.
-        for (var callbackId in callbacks) {
+        for(var callbackId in callbacks) {
             callback = callbacks[callbackId];
             callback.method.call(callback.scope, { E: error });
         }

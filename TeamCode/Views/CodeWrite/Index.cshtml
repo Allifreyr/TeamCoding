@@ -4,10 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>@ViewBag.fileName@ViewBag.fileType</h2>
+<h2>@ViewBag.fileName @ViewBag.fileType</h2>
 
 @using (Html.BeginForm("SaveCode", "CodeWrite", FormMethod.Post))
-    {
+{
     @Html.HiddenFor(m => m.content, new { @id = "hidden_editor" })
     @Html.HiddenFor(m => m.id)
     @Html.HiddenFor(m => m.fileType, new { @Value = ViewBag.fileType })
@@ -63,7 +63,6 @@
             if(silent) {
                 return;
             }
-            console.log(obj);
             codeHub.server.onChange(obj, documentID);
         });
     });

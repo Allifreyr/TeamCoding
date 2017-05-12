@@ -15,8 +15,6 @@ namespace TeamCode.Controllers
     {
         private ApplicationDbContext _db = new ApplicationDbContext();
 
-
-
         // GET: CodeWrite
         [Authorize]
         public ActionResult Index(int? id)
@@ -30,11 +28,12 @@ namespace TeamCode.Controllers
             int projectId = file.project.id;
             List<UserToProjects> up = UserToProjectsService.Instance.GetUserWithProjectID(projectId);
             bool userFound = false;
+
             //Check if logged in user is owner or member of project
             try
             {
 
-                for (int i = 0; i < up.Count; i++)
+                for(int i = 0; i < up.Count; i++)
                 {
                     if(up[i].user.Id == Session["userId"].ToString())
                     {
@@ -42,12 +41,12 @@ namespace TeamCode.Controllers
                     }
                 }
 
-                if (file.user.Id == Session["userId"].ToString())
+                if(file.user.Id == Session["userId"].ToString())
                 {
                     userFound = true;
                 }
 
-                    if (!userFound)
+                    if(!userFound)
                 {
                     return RedirectToAction("Index", "MyProjects"); //Redirect to Myproject
                 }
@@ -63,15 +62,11 @@ namespace TeamCode.Controllers
             }
 
 
-            ViewBag.Code = _db.Files.Where(gvc => gvc.id == id).SingleOrDefault().content;
+            ViewBag.Code = _db.Files.Where(c => c.id == id).SingleOrDefault().content;
             ViewBag.documentID = id.Value;
-            //ViewBag.fileType = FileService.Instance.GetFileType(id.Value);
             ViewBag.fileType = _db.Files.Where(gft => gft.id == id).SingleOrDefault().fileType;
-            //ViewBag.fileName = FileService.Instance.GetFileName(id.Value);
             ViewBag.fileName = _db.Files.Where(gfn => gfn.id == id).SingleOrDefault().fileName;
             ViewBag.projectID = FileService.Instance.GetFileProjectID(id.Value).id;
-            //ViewBag.projectID = _db.Files.Where(gfp => gfp.id == id).SingleOrDefault().project;
-            //ViewBag.userID = FileService.Instance.GetFileUserID(id.Value).Id;
             ViewBag.userID = _db.Files.Find(id).user;
 
 
