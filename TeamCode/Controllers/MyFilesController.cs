@@ -99,6 +99,7 @@ namespace TeamCode.Controllers
         {
             Project proj = FileService.Instance.GetFileProjectID(file.id);
             File edit = FileService.Instance.PostFileByID(file);
+            File returnById = FileService.Instance.GetFileByID(file.id);
 
             if(edit != null)
             {
@@ -106,7 +107,7 @@ namespace TeamCode.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Myfiles", new { id = proj.id });
+                return RedirectToAction("Edit", "Myfiles", new { id = returnById.id });
             }
         }
 
