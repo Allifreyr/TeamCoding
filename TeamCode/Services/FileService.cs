@@ -31,11 +31,6 @@ namespace TeamCode.Services
             _db = new ApplicationDbContext();
         }
 
-        internal File AddNewFile()
-        {
-            throw new NotImplementedException();
-        }
-
         public List<File> GetFilesByProject(int? projectID)
         {
             _db = new ApplicationDbContext();
@@ -62,8 +57,6 @@ namespace TeamCode.Services
         {
             File fileByID = _db.Files.Find(fileID);
 
-            //(from f in _db.Files where f.id == fileID select f).SingleOrDefault();
-
             return fileByID.user;
         }
 
@@ -89,7 +82,6 @@ namespace TeamCode.Services
 
         public File GetFileByID(int fileID)
         {
-            //var fileByID = (from f in _db.Files where f.id == fileID select f).SingleOrDefault();
             var fileByID = _db.Files.Where(f => f.id == fileID).SingleOrDefault();
 
             return fileByID;
@@ -97,7 +89,6 @@ namespace TeamCode.Services
 
         public File PostFileByID(File file)
         {
-            //var fileByID = (from f in _db.Files where f.id == fileID select f).SingleOrDefault();
             File dbFile = _db.Files.Where(f => f.id == file.id).SingleOrDefault();
             List<File> allFiles = _db.Files.Where(f => f.project.id == dbFile.project.id).ToList();
             for (var i = 0; i < allFiles.Count(); i++)
@@ -138,7 +129,7 @@ namespace TeamCode.Services
                             select p).SingleOrDefault();
             file.fileName = "Untitled";
             file.fileType = ".js";
-            file.content = "Vei þetta virkaði! - Hello world og eitthvað þannig..";
+       //     file.content = "Vei þetta virkaði! - Hello world og eitthvað þannig..";
             file.user = (from u in _db.Users
                          where u.Id == userId
                          select u).SingleOrDefault();
@@ -154,7 +145,7 @@ namespace TeamCode.Services
                             select p).SingleOrDefault();
             file.fileName = fileName;
             file.fileType = fileType;
-            file.content = "Vei virkadi - Hello World og eitthvad solleidis :D !!!";
+          //  file.content = "Vei virkadi - Hello World og eitthvad solleidis :D !!!";
             file.user = (from u in _db.Users
                          where u.Id == userId
                          select u).SingleOrDefault();

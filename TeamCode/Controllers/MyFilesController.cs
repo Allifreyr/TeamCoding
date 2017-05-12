@@ -31,19 +31,6 @@ namespace TeamCode.Controllers
 
             var f = FileService.Instance.GetFilesByProject(id);
 
-            /*            var p = ProjectService.Instance.GetProjectByID(id.Value);
-
-                        ViewBag.ProjectName = p.projectName;
-                        try
-                        {
-                            ViewBag.ProjectOwner = p.user.UserName;
-                        }
-                        catch
-                        {
-                            return View("Error");
-                        }
-
-                        ViewBag.ProjectID = id.Value;*/
             if(f == null)
             {
                 return View();
@@ -63,7 +50,6 @@ namespace TeamCode.Controllers
             int projectId = id.Value;
             string userId = User.Identity.GetUserId();
 
-            //Tékka á nöfnum
             FileService.Instance.AddNewFile(userId, projectId);
             return RedirectToAction("Index", "Myfiles", new { id = projectId });
 
