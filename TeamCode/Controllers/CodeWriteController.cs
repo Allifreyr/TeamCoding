@@ -30,6 +30,7 @@ namespace TeamCode.Controllers
             int projectId = file.project.id;
             List<UserToProjects> up = UserToProjectsService.Instance.GetUserWithProjectID(projectId);
             bool userFound = false;
+
             //Check if logged in user is owner or member of project
             try
             {
