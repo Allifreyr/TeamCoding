@@ -136,7 +136,7 @@ namespace TeamCode.Controllers
                 
                 if(userInTable != null)
                 {
-                    for (int i = 0; i < userInTable.Count; i++)
+                    for(int i = 0; i < userInTable.Count; i++)
                     {
                         if(userInTable[i].project.id == userToProject.projectId)
                         {

@@ -406,7 +406,7 @@ $.extend($.validator, {
 		
 		checkForm: function() {
 			this.prepareForm();
-			for (var i = 0, elements = (this.currentElements = this.elements()); elements[i]; i++) {
+			for(var i = 0, elements = (this.currentElements = this.elements()); elements[i]; i++) {
 				this.check(elements[i]);
 			}
 			return this.valid(); 
@@ -455,7 +455,7 @@ $.extend($.validator, {
 				// add items to error list and map
 				$.extend(this.errorMap, errors);
 				this.errorList = [];
-				for (var name in errors) {
+				for(var name in errors) {
 					this.errorList.push({
 						message: errors[name],
 						element: this.findByName(name)[0]
@@ -502,7 +502,7 @@ $.extend($.validator, {
 		
 		objectLength: function(obj) {
 			var count = 0;
-			for (var i in obj)
+			for(var i in obj)
 				count++;
 			return count;
 		},
@@ -599,7 +599,7 @@ $.extend($.validator, {
 			
 			var rules = $(element).rules();
 			var dependencyMismatch = false;
-			for (var method in rules) {
+			for(var method in rules) {
 				var rule = { method: method, parameters: rules[method] };
 				try {
 					var result = $.validator.methods[method].call(this, element.value.replace(/\r/g, ""), element, rule.parameters);
@@ -699,7 +699,7 @@ $.extend($.validator, {
 		},
 		
 		defaultShowErrors: function() {
-			for (var i = 0; this.errorList[i]; i++) {
+			for(var i = 0; this.errorList[i]; i++) {
 				var error = this.errorList[i];
 				this.settings.highlight && this.settings.highlight.call(this, error.element, this.settings.errorClass, this.settings.validClass);
 				this.showLabel(error.element, error.message);
@@ -708,12 +708,12 @@ $.extend($.validator, {
 				this.toShow = this.toShow.add(this.containers);
 			}
 			if(this.settings.success) {
-				for (var i = 0; this.successList[i]; i++) {
+				for(var i = 0; this.successList[i]; i++) {
 					this.showLabel(this.successList[i]);
 				}
 			}
 			if(this.settings.unhighlight) {
-				for (var i = 0, elements = this.validElements(); elements[i]; i++) {
+				for(var i = 0, elements = this.validElements(); elements[i]; i++) {
 					this.settings.unhighlight.call(this, elements[i], this.settings.errorClass, this.settings.validClass);
 				}
 			}
@@ -898,7 +898,7 @@ $.extend($.validator, {
 		var rules = {};
 		var $element = $(element);
 
-		for (var method in $.validator.methods) {
+		for(var method in $.validator.methods) {
 			var value = $element.attr(method);
 			if(value) {
 				rules[method] = value;
@@ -1184,7 +1184,7 @@ $.extend($.validator, {
 
 			value = value.replace(/\D/g, "");
 
-			for (var n = value.length - 1; n >= 0; n--) {
+			for(var n = value.length - 1; n >= 0; n--) {
 				var cDigit = value.charAt(n);
 				var nDigit = parseInt(cDigit, 10);
 				if(bEven) {

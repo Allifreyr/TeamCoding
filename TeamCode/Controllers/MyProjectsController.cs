@@ -37,7 +37,7 @@ namespace TeamCode.Controllers
             List<UserToProjects> upShared = UserToProjectsService.Instance.GetProjectsSharedWithUser(userId);
             List<Project> projects = new List<Project>();
 
-            for (int i = 0; i < upShared.Count; i++)
+            for(int i = 0; i < upShared.Count; i++)
             {
                 projects.Add(ProjectService.Instance.GetProjectByID(upShared[i].project.id));
             }

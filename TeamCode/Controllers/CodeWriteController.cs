@@ -33,7 +33,7 @@ namespace TeamCode.Controllers
             try
             {
 
-                for (int i = 0; i < up.Count; i++)
+                for(int i = 0; i < up.Count; i++)
                 {
                     if(up[i].user.Id == Session["userId"].ToString())
                     {
@@ -41,12 +41,12 @@ namespace TeamCode.Controllers
                     }
                 }
 
-                if (file.user.Id == Session["userId"].ToString())
+                if(file.user.Id == Session["userId"].ToString())
                 {
                     userFound = true;
                 }
 
-                    if (!userFound)
+                    if(!userFound)
                 {
                     return RedirectToAction("Index", "MyProjects"); //Redirect to Myproject
                 }

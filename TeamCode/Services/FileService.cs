@@ -91,7 +91,7 @@ namespace TeamCode.Services
         {
             File dbFile = _db.Files.Where(f => f.id == file.id).SingleOrDefault();
             List<File> allFiles = _db.Files.Where(f => f.project.id == dbFile.project.id).ToList();
-            for (var i = 0; i < allFiles.Count(); i++)
+            for(var i = 0; i < allFiles.Count(); i++)
             {
                 if(allFiles[i].fileName == file.fileName && allFiles[i].fileType == file.fileType)
                 {
@@ -129,7 +129,7 @@ namespace TeamCode.Services
             var maxer = _db.Files.Max(r => r.id);
             string randomStringGen = "";
 
-            for (int i = 0; i < 6; i++)
+            for(int i = 0; i < 6; i++)
             {
                 randomStringGen += Convert.ToChar(Convert.ToInt32(Math.Floor(26 * random.NextDouble() + 65))).ToString().ToLower();
             }
