@@ -86,12 +86,10 @@ namespace TeamCode.Services
         public void DeleteProject(int? id)
         {
             Project proj = _db.Projects.Find(id);
+
             _db.Projects.Remove(proj);
             _db.Entry(proj).State = EntityState.Deleted;
             _db.SaveChanges();
         }
-
-
-
     }
 }

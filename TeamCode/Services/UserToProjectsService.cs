@@ -20,20 +20,17 @@ namespace TeamCode.Services
             get
             {
                 if(instance == null)
+                {
                     instance = new UserToProjectsService();
+                }
+
                 return instance;
             }
         }
 
         public List<UserToProjects> GetProjectsSharedWithUser(string userId)
         {
-
-          //  _db = new ApplicationDbContext();
             var projectsShared = _db.UsersToProjects.Where(up => up.user.Id == userId).ToList();
-
-   /*         var projectsShared = (from up in _db.UsersToProjects
-                                  where up.user.Id == userId
-                                  select up).ToList();*/
 
             return projectsShared;
         }
@@ -48,9 +45,8 @@ namespace TeamCode.Services
         public List<UserToProjects> GetProjectById(int? fileID)
         {
             var utp = _db.UsersToProjects.Where(up => up.project.id == fileID).ToList();
+
             return utp;
         }
     }
-
-
 }
