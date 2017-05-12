@@ -95,7 +95,6 @@ namespace TeamCode.Services
             {
                 if(allFiles[i].fileName == file.fileName && allFiles[i].fileType == file.fileType)
                 {
-                    //Vantar skilabod her, "Filename already taken in project."
                     return null;
                 }
             }
