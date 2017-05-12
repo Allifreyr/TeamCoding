@@ -143,8 +143,8 @@ footer > a:hover {
 .btn-login:hover,
 .btn-login:focus {
 	color: #fff;
-	background-color: ##b266b2;
-	border-color: ##b266b2;
+	background-color: #b266b2;
+	border-color: #b266b2;
 }
 
 .btn-register {
